@@ -7,9 +7,13 @@ My arch linux .config files for hyprland
 2. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
 3. Download and install Hack Nerd Font https://www.nerdfonts.com/font-downloads
+   
   `cd ~/Downloads`
+  
   `unzip Hack.zip`
+  
   `mv ~/Downloads/*.ttf ~/.local/share/fonts/`
+  
   If parrent directory dose not exist `mkdir -p ~/.local/share/fonts/`
 
 4.Change shell to zsh `chsh -s /bin/zsh`
