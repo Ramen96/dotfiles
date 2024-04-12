@@ -23,11 +23,9 @@ My arch linux .config files for hyprland
 
 4.Change shell to zsh `chsh -s /bin/zsh`
 
-5.Install powerlevle 10K https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation
+5.Install powerlevle 10K [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
 
-6.Install zsh auto-suggestions and syntax highlighting
-  https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
-  https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+6.Install [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
   ```sh
     plugins=( 
         # other plugins...
