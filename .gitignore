@@ -1,0 +1,15 @@
+# Directories
+/google-chrome
+/htop
+/Code
+/htop
+/picom
+/systemd
+/pulse
+/session
+/WebCord
+/yay
+
+# Files
+trashrc
+mimeapps.list
