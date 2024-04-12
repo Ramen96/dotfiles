@@ -3,6 +3,7 @@ My arch linux config dotfiles
 
 # Dependencies
 1.`sudo pacman -S zsh neofetch unzip`
+
 2.Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 3.Download and install Hack Nerd Font https://www.nerdfonts.com/font-downloads
   `cd ~/Downloads`
