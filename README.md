@@ -1,5 +1,5 @@
 # Dotfiles
-My arch linux config dotfiles for hyprland
+My arch linux .config files for hyprland
 
 # Dependencies
 1. `sudo pacman -S zsh neofetch unzip`
