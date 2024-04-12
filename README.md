@@ -2,7 +2,7 @@
 My arch linux .config files for hyprland
 
 # Install dependencies
-1. `sudo pacman -S zsh neofetch unzip`
+1. `sudo pacman -S zsh neofetch unzip waybar`
 
 2. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
