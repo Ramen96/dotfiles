@@ -1,7 +1,7 @@
 # Dotfiles
 My arch linux .config files for hyprland
 
-# Install dependencies
+# Install Dependencies
 1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct`
 
 2. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
@@ -32,3 +32,6 @@ My arch linux .config files for hyprland
         zsh-autosuggestions zsh-syntax-highlighting
     )
     ```
+# Pacman Customization
+    1. `nano /etc/pacman.conf`
+    2 In the Misc options section uncomment `Color` and add `ILoveCandy` to the bottom of that section
