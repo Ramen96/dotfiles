@@ -32,6 +32,7 @@ My arch linux .config files for hyprland
         zsh-autosuggestions zsh-syntax-highlighting
     )
     ```
+
 # Pacman Customization
     1. `nano /etc/pacman.conf`
     2 In the Misc options section uncomment `Color` and add `ILoveCandy` to the bottom of that section
