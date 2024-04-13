@@ -1,5 +1,5 @@
 # Dotfiles
-My arch linux .config files for hyprland
+My Arch Linux .config files for Hyprland
 
 # Install Dependencies
 1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct`
@@ -20,13 +20,12 @@ My arch linux .config files for hyprland
     mkdir -p ~/.local/share/fonts/
     ```
 
+4. Change shell to zsh `chsh -s /bin/zsh`
 
-4.Change shell to zsh `chsh -s /bin/zsh`
+5. Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
 
-5.Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
-
-6.Install [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
-  ```sh
+6. Install [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
+    ```sh
     plugins=( 
         # other plugins...
         zsh-autosuggestions zsh-syntax-highlighting
@@ -34,5 +33,6 @@ My arch linux .config files for hyprland
     ```
 
 # Pacman Customization
-    1. `nano /etc/pacman.conf`
-    2 In the Misc options section uncomment `Color` and add `ILoveCandy` to the bottom of that section
+
+1. `nano /etc/pacman.conf`
+2. In the Misc options section, uncomment `Color` and add `ILoveCandy` to the bottom of that section
