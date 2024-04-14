@@ -1,5 +1,5 @@
 # Dotfiles
-My Arch Linux .config files for Hyprland
+My Arch Linux .config files for Hyprland. This is meant to be installed on top of a bare bones Arch installianon with only hyprland installed.
 
 # Install Dependencies
 1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct curl pcmanfm-gtk3 ark-gtk-theme steam rofi`
@@ -32,6 +32,10 @@ My Arch Linux .config files for Hyprland
     )
     ```
 8. Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
+
+# Install config files
+Copy the dirctories and files from this repo to your ~/.config file.
+
 # Pacman Customization
 
 1. `nano /etc/pacman.conf`
