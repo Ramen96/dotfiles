@@ -13,6 +13,7 @@
 /ibus
 /libfm
 /dconf
+/xsettingsd
 
 # Files
 trashrc
