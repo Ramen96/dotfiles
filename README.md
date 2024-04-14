@@ -24,16 +24,14 @@ My Arch Linux .config files for Hyprland
 
 6. Change shell to zsh `chsh -s /bin/zsh`
 
-7. Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
-
-8. Install [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
+7. Install [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
     ```sh
     plugins=( 
         # other plugins...
         zsh-autosuggestions zsh-syntax-highlighting
     )
     ```
-
+8. Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
 # Pacman Customization
 
 1. `nano /etc/pacman.conf`
