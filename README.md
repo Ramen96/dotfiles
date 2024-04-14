@@ -38,4 +38,4 @@ My Arch Linux .config files for Hyprland
 
 1. `nano /etc/pacman.conf`
 2. In the Misc options section, uncomment `Color` and `ParallelDownloads`
-3. add `ILoveCandy` to the bottom of that section
+3. Add `ILoveCandy` to the bottom of Misc options section
