@@ -2,7 +2,7 @@
 My Arch Linux .config files for Hyprland
 
 # Install Dependencies
-1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct curl pcmanfm-gtk3 ark-gtk-theme steam`
+1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct curl pcmanfm-gtk3 ark-gtk-theme steam rofi`
 2. `yay -S nwg-look visual-studio-code-bin google-chrome webcord`
 
 3. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
@@ -36,4 +36,5 @@ My Arch Linux .config files for Hyprland
 # Pacman Customization
 
 1. `nano /etc/pacman.conf`
-2. In the Misc options section, uncomment `Color` and add `ILoveCandy` to the bottom of that section
+2. In the Misc options section, uncomment `Color` and `ParallelDownloads`
+3. add `ILoveCandy` to the bottom of that section
