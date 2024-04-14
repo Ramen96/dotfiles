@@ -4,10 +4,11 @@ My Arch Linux .config files for Hyprland
 # Install Dependencies
 1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct curl pcmanfm-gtk3 ark-gtk-theme steam rofi`
 2. `yay -S nwg-look visual-studio-code-bin google-chrome webcord`
+3. In nwg-look set gtk-theme to Ark-Dark
 
-3. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+4. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
-4. Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).
+5. Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).
 
     ```sh
     cd ~/Downloads
@@ -21,11 +22,11 @@ My Arch Linux .config files for Hyprland
     mkdir -p ~/.local/share/fonts/
     ```
 
-5. Change shell to zsh `chsh -s /bin/zsh`
+6. Change shell to zsh `chsh -s /bin/zsh`
 
-6. Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
+7. Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
 
-7. Install [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
+8. Install [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
     ```sh
     plugins=( 
         # other plugins...
