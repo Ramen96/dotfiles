@@ -1,7 +1,7 @@
 # Dotfiles
 My Arch Linux .config files for Hyprland. This is meant to be installed on top of a bare bones Arch installianon with only hyprland installed.
 
-# Install Dependencies
+# 1) Install Dependencies
 1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct curl pcmanfm-gtk3 ark-gtk-theme steam rofi`
 2. `yay -S nwg-look visual-studio-code-bin google-chrome webcord`
 3. In nwg-look set gtk-theme to Ark-Dark
@@ -33,10 +33,10 @@ My Arch Linux .config files for Hyprland. This is meant to be installed on top o
     ```
 8. Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
 
-# Install config files
+# 2) Install config files
 Copy the dirctories and files from this repo to your ~/.config file.
 
-# Pacman Customization
+# 3) Pacman Customization
 
 1. `nano /etc/pacman.conf`
 2. In the Misc options section, uncomment `Color` and `ParallelDownloads`
