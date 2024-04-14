@@ -41,3 +41,6 @@ Copy the dirctories and files from this repo to your ~/.config file.
 1. `nano /etc/pacman.conf`
 2. In the Misc options section, uncomment `Color` and `ParallelDownloads`
 3. Add `ILoveCandy` to the bottom of Misc options section
+
+# 4) Dev Environment
+1. Install [nodejs](https://nodejs.org/en/download/package-manager)
