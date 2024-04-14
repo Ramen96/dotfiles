@@ -3,7 +3,7 @@ My Arch Linux .config files for Hyprland
 
 # Install Dependencies
 1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct curl pcmanfm-gtk3`
-2. `yay -S nwg-look`
+2. `yay -S nwg-look visual-studio-code-bin google-chrome`
 
 3. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
