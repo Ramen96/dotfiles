@@ -9,6 +9,10 @@
 /session
 /WebCord
 /yay
+/cef_user_data
+/donf
+/ibus
+/libfm
 
 # Files
 trashrc
