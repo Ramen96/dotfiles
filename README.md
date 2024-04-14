@@ -45,3 +45,4 @@ Copy the dirctories and files from this repo to your ~/.config file.
 # 4) Dev Environment
 1. Install [nodejs](https://nodejs.org/en/download/package-manager)
 2. Install [anaconda](https://www.anaconda.com/)
+3. Install Angular cli `npm install -g @angular/cli`
