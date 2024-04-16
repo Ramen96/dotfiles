@@ -18,14 +18,14 @@
     Then, create and edit a new file, for example `postman.desktop`, using your preferred text editor:
     `sudo nano postman.desktop`
     Add the following content to the file:
-    '''[Desktop Entry]
+    ```[Desktop Entry]
         Name=Postman
         Exec=/opt/Postman/Postman
         Icon=/opt/Postman/app/resources/app/assets/icon.png
         Terminal=false
         Type=Application
         Categories=Development;
-    '''
+    ```
     Save and exit the text editor.
 
 6. **Set Permissions (if necessary):**
