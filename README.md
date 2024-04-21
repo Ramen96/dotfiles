@@ -2,7 +2,7 @@
 Arch Linux .config files for i3-wm
 
 # 1) Install Dependencies
-1. `sudo pacman -S zsh neofetch unzip polybar lxappearance qt5ct picom pcmanfm flatpak arc-gtk-theme`
+1. `sudo pacman -S zsh neofetch unzip polybar lxappearance qt5ct picom pcmanfm flatpak arc-gtk-theme rofi`
 2. `yay -S visual-studio-code-bin google-chrome`
 3. In lxappearance set gtk-theme to Ark-Dark
 
