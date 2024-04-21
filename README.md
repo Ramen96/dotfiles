@@ -1,10 +1,10 @@
 # Dotfiles
-My Arch Linux .config files for Hyprland. This is meant to be installed on top of a bare bones Arch installianon with only hyprland installed.
+Arch Linux .config files for i3-wm
 
 # 1) Install Dependencies
-1. `sudo pacman -S zsh neofetch unzip waybar qt5ct qt6ct curl pcmanfm-gtk3 ark-gtk-theme steam rofi`
-2. `yay -S nwg-look visual-studio-code-bin google-chrome webcord`
-3. In nwg-look set gtk-theme to Ark-Dark
+1. `sudo pacman -S zsh neofetch unzip polybar lxappearance qt5ct picom pcmanfm feh ark-gtk-theme`
+2. `yay -S visual-studio-code-bin google-chrome`
+3. In lxappearance set gtk-theme to Ark-Dark
 
 4. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
