@@ -205,7 +205,7 @@ client.background       #ffffff
 
 exec_always ~/.config/polybar/launch.sh &
 exec_always feh --bg-fill ~/Pictures/retrowave.jpg
-# exec_always --no-startup-id picom -b
+exec_always --no-startup-id picom -b
 
 #  bar {
 #        status_command i3status
