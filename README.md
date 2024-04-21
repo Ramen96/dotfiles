@@ -46,3 +46,20 @@ Copy the dirctories and files from this repo to your ~/.config file.
 1. Install [nodejs](https://nodejs.org/en/download/package-manager)
 2. Install [anaconda](https://www.anaconda.com/)
 3. Install Angular cli `npm install -g @angular/cli`
+
+# Install yay
+1.
+    ```
+    sudo pacman -Syu
+    sudo pacman -S base-devel
+    ```
+2. 
+    ```
+    sudo pacman -S git
+    git clone https://aur.archlinux.org/yay.git
+    ```
+3.
+    ```
+    cd yay
+    makepkg -si
+    ```
