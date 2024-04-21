@@ -3,7 +3,6 @@
 /htop
 /Code
 /htop
-/picom
 /systemd
 /pulse
 /session
@@ -14,6 +13,8 @@
 /libfm
 /dconf
 /xsettingsd
+/Electron
+/discord
 
 # Files
 trashrc
