@@ -9,11 +9,21 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# i3 gaps
+gaps inner 10
+gaps outer 10
+
+# Window settings
+for_window [class=".*"] border pixel 1
+# Scroll to workspaces
+bindsym $mod+Shift+WheelUp workspace prev
+bindsym $mod+Shift+WheelDown workspace next
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Hack Nerd Font 12
+font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -41,12 +51,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# Set the inner and outer gaps
-gaps inner 10
-gaps outer 10
-
-new_window none
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -55,18 +59,13 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
-
-# start rofi
-bindsym $mod+space exec rofi -show drun
-
-
+bindsym $mod+space exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -115,7 +114,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
+bindsym $mod+d focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -194,9 +193,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
+# Window Border color
 # class                 border  backgr. text    indicator child_border
-client.focused          #d79921 #d79921 #ffffff #d79921   #d79921
+client.focused          #00ffff #00ffff #ffffff #00ffff   #00ffff
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -204,14 +203,12 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+exec_always ~/.config/polybar/launch.sh &
+exec_always feh --bg-fill ~/Pictures/cyberpunk.jpg
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-
-exec_always ~/.config/polybar/launch.sh &
-exec_always feh --bg-fill ~/Pictures/retrowave.jpg
-exec_always --no-startup-id picom -b
-
-#  bar {
-#        status_command i3status
+# bar {
+#         status_command i3status
 # }
