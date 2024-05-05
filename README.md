@@ -1,14 +1,13 @@
 # Dotfiles
-Arch Linux .config files for i3-wm
+i3-wm
 
 # 1) Install Dependencies
-1. `sudo pacman -S zsh neofetch unzip polybar lxappearance qt5ct picom pcmanfm flatpak arc-gtk-theme rofi alacritty dmenu`
+1. `sudo pacman -S zsh neofetch unzip polybar lxappearance qt5ct picom pcmanfm flatpak arc-gtk-theme rofi kitty dmenu`
 2. `yay -S visual-studio-code-bin google-chrome`
-3. In lxappearance set gtk-theme to Ark-Dark
 
-4. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+3. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
-5. Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).
+4. Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).
 
     ```sh
     cd ~/Downloads
@@ -22,16 +21,18 @@ Arch Linux .config files for i3-wm
     mkdir -p ~/.local/share/fonts/
     ```
 
-6. Change shell to zsh `chsh -s /bin/zsh`
+5. Change shell to zsh `chsh -s /bin/zsh`
 
-7. Install [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
+6. Install [powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation). [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
     ```sh
     plugins=( 
         # other plugins...
         zsh-autosuggestions zsh-syntax-highlighting
     )
     ```
-8. Install powerlevel10k [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation).
+    ```
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+    ```
 
 # 2) Install config files
 Copy the dirctories and files from this repo to your ~/.config file.
