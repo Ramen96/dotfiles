@@ -25,5 +25,13 @@ theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
+-- taglist fonts
+theme.taglist_bg_focus = "#ff0000"
+theme.taglist_fg_focus = "#ffffff"
+theme.taglist_bg_normal = "#000000"
+theme.taglist_fg_normal = "#aaaaaa"
+theme.taglist_font = "sans 12"
+
+
 -- Return the theme table to be used by Awesome WM
 return theme
