@@ -218,8 +218,47 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        layout   = {
+            spacing = 5,
+            layout  = wibox.layout.fixed.horizontal
+        },
+        widget_template = {
+            {
+                {
+                    {
+                        id     = 'clienticon',
+                        widget = awful.widget.clienticon,
+                    },
+                    margins = 4,
+                    widget  = wibox.container.margin,
+                },
+                {
+                    {
+                        id     = 'text_role',
+                        widget = wibox.widget.textbox,
+                        font   = 'Hack 12', -- Custom font
+                    },
+                    right = 10,  -- Add margin to the right side of the text
+                    widget = wibox.container.margin,
+                },
+                layout = wibox.layout.fixed.horizontal,
+            },
+            id     = 'background_role',
+            widget = wibox.container.background,
+            bg     = '#222222', -- Background color for inactive windows
+            shape  = gears.shape.rounded_bar, -- Rounded corners
+            create_callback = function(self, c, index, objects)
+                self:get_children_by_id('clienticon')[1].client = c
+                self:get_children_by_id('text_role')[1].markup = '<b>' .. c.name .. '</b>'
+            end,
+            update_callback = function(self, c, index, objects)
+                self:get_children_by_id('clienticon')[1].client = c
+                self:get_children_by_id('text_role')[1].markup = '<b>' .. c.name .. '</b>'
+            end,
+        }
     }
+    
 
     -- Create the wibox
     s.mywibox = awful.wibar({
@@ -239,13 +278,14 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
+        nil, -- Middle widget (empty to push the tasklist to the right)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            s.mytasklist,
+            -- mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
-            s.mylayoutbox,
+            -- s.mylayoutbox,
         },
     }
 end)
