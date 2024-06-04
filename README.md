@@ -2,7 +2,7 @@
 i3-wm
 
 # 1) Install Dependencies
-1. `sudo pacman -S zsh neofetch unzip polybar lxappearance qt5ct picom pcmanfm flatpak arc-gtk-theme rofi kitty dmenu`
+1. `sudo pacman -S zsh neofetch unzip polybar lxappearance nitrogen picom pcmanfm arc-gtk-theme rofi kitty dmenu`
 2. `yay -S visual-studio-code-bin google-chrome`
 
 3. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
