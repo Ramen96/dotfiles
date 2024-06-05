@@ -65,12 +65,12 @@ beautiful.useless_gap = 5
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
+    awful.layout.suit.fair,
     awful.layout.suit.spiral,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.floating,
     -- awful.layout.suit.spiral.dwindle,
@@ -218,46 +218,9 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons,
-        layout   = {
-            spacing = 5,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        widget_template = {
-            {
-                {
-                    {
-                        id     = 'clienticon',
-                        widget = awful.widget.clienticon,
-                    },
-                    margins = 4,
-                    widget  = wibox.container.margin,
-                },
-                {
-                    {
-                        id     = 'text_role',
-                        widget = wibox.widget.textbox,
-                        font   = 'Hack 12', -- Custom font
-                    },
-                    right = 10,  -- Add margin to the right side of the text
-                    widget = wibox.container.margin,
-                },
-                layout = wibox.layout.fixed.horizontal,
-            },
-            id     = 'background_role',
-            widget = wibox.container.background,
-            bg     = '#222222', -- Background color for inactive windows
-            shape  = gears.shape.rounded_bar, -- Rounded corners
-            create_callback = function(self, c, index, objects)
-                self:get_children_by_id('clienticon')[1].client = c
-                self:get_children_by_id('text_role')[1].markup = '<b>' .. c.name .. '</b>'
-            end,
-            update_callback = function(self, c, index, objects)
-                self:get_children_by_id('clienticon')[1].client = c
-                self:get_children_by_id('text_role')[1].markup = '<b>' .. c.name .. '</b>'
-            end,
-        }
+        buttons = tasklist_buttons
     }
+    
     
 
     -- Create the wibox
@@ -266,9 +229,9 @@ awful.screen.connect_for_each_screen(function(s)
         screen = s,
         bg = "#222222", -- background color
         opacity = 0.8,   -- transparency 
-        height = 25
-        })
-
+        height = 25      -- height (tab size)
+    })
+    
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -278,14 +241,13 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             s.mypromptbox,
         },
-        nil, -- Middle widget (empty to push the tasklist to the right)
+        s.mytasklist,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            s.mytasklist,
             -- mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
-            -- s.mylayoutbox,
+            s.mylayoutbox,
         },
     }
 end)
@@ -591,43 +553,43 @@ client.connect_signal("manage", function (c)
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-    -- buttons for the titlebar
-    local buttons = gears.table.join(
-        awful.button({ }, 1, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            -- Comment out the line below to prevent window movement
-            -- awful.mouse.client.move(c)
-        end),
-        awful.button({ }, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            -- Comment out the line below to prevent window resizing
-            -- awful.mouse.client.resize(c)
-        end)
-    )
+-- client.connect_signal("request::titlebars", function(c)
+--     -- buttons for the titlebar
+--     local buttons = gears.table.join(
+--         awful.button({ }, 1, function()
+--             c:emit_signal("request::activate", "titlebar", {raise = true})
+--             -- Comment out the line below to prevent window movement
+--             -- awful.mouse.client.move(c)
+--         end),
+--         awful.button({ }, 3, function()
+--             c:emit_signal("request::activate", "titlebar", {raise = true})
+--             -- Comment out the line below to prevent window resizing
+--             -- awful.mouse.client.resize(c)
+--         end)
+--     )
 
-    awful.titlebar(c) : setup {
-        { -- Left
-            awful.titlebar.widget.closebutton    (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.minimizebutton (c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
-            buttons = buttons,
-            layout  = wibox.layout.flex.horizontal
-        },
-        { -- Right
-            layout = wibox.layout.fixed.horizontal()
-        },
-        layout = wibox.layout.align.horizontal
-    }
-end)
+--     awful.titlebar(c) : setup {
+--         { -- Left
+--             awful.titlebar.widget.closebutton    (c),
+--             awful.titlebar.widget.maximizedbutton(c),
+--             awful.titlebar.widget.minimizebutton (c),
+--             buttons = buttons,
+--             layout  = wibox.layout.fixed.horizontal
+--         },
+--         { -- Middle
+--             { -- Title
+--                 align  = "center",
+--                 widget = awful.titlebar.widget.titlewidget(c)
+--             },
+--             buttons = buttons,
+--             layout  = wibox.layout.flex.horizontal
+--         },
+--         { -- Right
+--             layout = wibox.layout.fixed.horizontal()
+--         },
+--         layout = wibox.layout.align.horizontal
+--     }
+-- end)
 
 
 -- Enable sloppy focus, so that focus follows mouse.
