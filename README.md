@@ -65,14 +65,17 @@ Copy the dirctories and files from this repo to your ~/.config file.
     cd yay
     makepkg -si
 
-# Snap
-1.  
+# Snap  
     ```
     yay -S snapd
     sudo systemctl enable snapd.socket
     ```  
-    Restart your session
+    Restart your pc
     ```
     snap refresh --time
     sudo snap set core refresh.timer=0:00~24:00/2
+    ```
+    Classic snaps  
+    ```
+    sudo ln -s /var/lib/snapd/snap /snap
     ```
