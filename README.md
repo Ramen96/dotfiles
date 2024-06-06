@@ -79,3 +79,7 @@ Copy the dirctories and files from this repo to your ~/.config file.
     ```
     sudo ln -s /var/lib/snapd/snap /snap
     ```
+
+# Rofi
+
+Download and install themes [here](https://github.com/adi1090x/rofi).
