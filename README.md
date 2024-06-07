@@ -1,5 +1,4 @@
 # Dotfiles
-i3-wm
 
 # 1) Install Dependencies
 1. `sudo pacman -S zsh neofetch unzip polybar lxappearance nitrogen picom pcmanfm arc-gtk-theme rofi kitty dmenu`
