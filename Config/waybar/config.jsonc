@@ -6,6 +6,10 @@
     // "width": 1280, // Waybar width
     "spacing": 10, // Gaps between modules (4px)
     // Choose the order of the modules
+    "margin-top": 10,
+    "margin-left": 20,
+    "margin-right": 20,
+    "margin-bottom": -5,
     "modules-left": [
         "hyprland/workspaces",
         // "hyprland/mode",
@@ -36,7 +40,14 @@
     ],
     // Modules configuration
      "hyprland/workspaces": {
-        "disable-scroll": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        },
+        "disable-scroll": false,
         "all-outputs": true,
         "warp-on-scroll": false,
         "format": "{icon}",
