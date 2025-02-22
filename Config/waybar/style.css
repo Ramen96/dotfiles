@@ -121,7 +121,7 @@ button:hover {
 }
 
 #window {
-    color: @text-color;
+    color: @accent-one;
 }
 
 @keyframes slideWorkspace {
