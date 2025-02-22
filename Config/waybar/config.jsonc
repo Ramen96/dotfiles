@@ -21,10 +21,11 @@
         "clock"
     ],
     "modules-right": [
+        "tray",
         "mpd",
         // "idle_inhibitor",
         "pulseaudio",
-        "pulseaudio/slider",
+        // "pulseaudio/slider",
         // "network",
         // "power-profiles-daemon",
         "cpu",
@@ -35,7 +36,6 @@
         // "hyprland/language",
         // "battery",
         // "battery#bat2",
-        "tray",
         "custom/power"
     ],
     // Modules configuration
