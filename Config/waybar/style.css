@@ -4,6 +4,8 @@
 @define-color accent-three #00FFB9;
 @define-color text-color #C0C5CE;
 @define-color accent-four #DA5BEA; /* New color for temperature */
+@define-color accent-five #00BFFF;
+
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
@@ -40,8 +42,8 @@ button:hover {
 #disk,
 #temperature,
 #backlight,
-#network,
 #pulseaudio,
+#network,
 #wireplumber,
 #custom-media,
 #tray,
@@ -59,6 +61,18 @@ button:hover {
     margin: 0 4px;
     color: @accent-two;
     border-radius: 10px;
+}
+
+#backlight {
+  color: @accent-one;
+}
+
+#battery {
+  color: @accent-three;
+}
+
+#network {
+  color: @accent-five;
 }
 
 #workspaces {

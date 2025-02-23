@@ -26,16 +26,16 @@
         // "idle_inhibitor",
         "pulseaudio",
         // "pulseaudio/slider",
-        // "network",
-        // "power-profiles-daemon",
+        "network",
+        "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
         "backlight",
-        "keyboard-state",
+        // "keyboard-state",
         // "hyprland/language",
-        // "battery",
-        // "battery#bat2",
+        "battery",
+        "battery#bat2",
         "custom/power"
     ],
     // Modules configuration
@@ -141,7 +141,7 @@
         "critical-threshold": 80,
         "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -150,18 +150,18 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
-            "warning": 30,
+            "good": 95,
+            "warning": 20,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄 ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-good": "{capacity}% {icon}", // An empty format will hide the module
+        "format-full": "{capacity}% {icon}",
+        "format-icons": ["󰂃", "󰁼", "󰁾", "󰂁", "󰁹"]
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -178,8 +178,8 @@
       }
     },
     "network": {
-        "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "interface": "wlan0", // (Optional) To force the use of this interface
+        "format-wifi": "{signalStrength}% ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
@@ -223,7 +223,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
+        "format" : "",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
