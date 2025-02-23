@@ -1,0 +1,10 @@
+# Theme
+theme = Monokai Remastered
+
+# Font
+font-size = 14
+
+# Window
+background-opacity = 0.7
+confirm-close-surface = false
+
