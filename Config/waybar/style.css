@@ -1,4 +1,4 @@
-@define-color background #1A1C25;
+@define-color background rgba(26, 28, 37, 0.9);
 @define-color accent-one #FFD700;
 @define-color accent-two #FF2079;
 @define-color accent-three #00FFB9;
