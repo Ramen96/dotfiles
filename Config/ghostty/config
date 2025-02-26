@@ -1,5 +1,6 @@
 # Theme
-theme = Monokai Remastered
+# theme = Monokai Remastered
+theme = Horizon
 
 # Font
 font-size = 14
