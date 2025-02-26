@@ -1,12 +1,13 @@
 # Dotfiles
 
-# 1) Install Dependencies
-1. `sudo pacman -S zsh neofetch unzip polybar lxappearance nitrogen picom pcmanfm arc-gtk-theme rofi kitty dmenu`
-2. `yay -S snapd`
+# 1) Packages
+1. `sudo pacman -S zsh fastfetch dosfstools htop unzip waybar vim nwg-look hyprpaper steam discord libreoffice-still hypridle dolphin wofi kitty ghostty`
+2. `yay -S visual-studio-code-bin brave-bin rog-control-center`
+3. `flatpaks postman pgadmin4`
 
-3. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+4. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
-4. Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).
+5. Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).
 
     ```sh
     cd ~/Downloads
@@ -20,9 +21,9 @@
     mkdir -p ~/.local/share/fonts/
     ```
 
-5. Change shell to zsh `chsh -s /bin/zsh`
+6. Change shell to zsh `chsh -s /bin/zsh`
 
-6. Install [powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation). [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
+7. Install [powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation). [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
     ```sh
     plugins=( 
         # other plugins...
@@ -33,20 +34,14 @@
     ZSH_THEME="powerlevel10k/powerlevel10k"
     ```
 
-# 2) Install config files
-Copy the dirctories and files from this repo to your ~/.config file.
-
-# 3) Pacman Customization
+# 2) Pacman Customization
 
 1. `nano /etc/pacman.conf`
 2. In the Misc options section, uncomment `Color` and `ParallelDownloads`
 3. Add `ILoveCandy` to the bottom of Misc options section
 
-# 4) Dev Environment
-1. Install [nodejs](https://nodejs.org/en/download/package-manager)
-2. Install [anaconda](https://www.anaconda.com/)
-3. Install Angular cli `npm install -g @angular/cli`
-4. Install Yarn `npm install --global yarn`
+# 3) Dev Environment
+1. node
 
 # Install yay
 1.
@@ -63,22 +58,3 @@ Copy the dirctories and files from this repo to your ~/.config file.
     ```
     cd yay
     makepkg -si
-
-# Snap  
-    ```
-    yay -S snapd
-    sudo systemctl enable snapd.socket
-    ```  
-    Restart your pc
-    ```
-    snap refresh --time
-    sudo snap set core refresh.timer=0:00~24:00/2
-    ```
-    Classic snaps  
-    ```
-    sudo ln -s /var/lib/snapd/snap /snap
-    ```
-
-# Rofi
-
-Download and install themes [here](https://github.com/adi1090x/rofi).
