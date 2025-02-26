@@ -5,9 +5,12 @@
 2. `yay -S visual-studio-code-bin brave-bin rog-control-center`
 3. `flatpaks postman pgadmin4`
 
-4. Install oh-my-zsh via curl `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+4. Install oh-my-zsh via curl
+   ```
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+   ```
 
-5. Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).
+6. Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).
 
     ```sh
     cd ~/Downloads
@@ -21,9 +24,9 @@
     mkdir -p ~/.local/share/fonts/
     ```
 
-6. Change shell to zsh `chsh -s /bin/zsh`
+7. Change shell to zsh `chsh -s /bin/zsh`
 
-7. Install [powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation). [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
+8. Install [powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation). [zsh auto-suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) and [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md).
     ```sh
     plugins=( 
         # other plugins...
