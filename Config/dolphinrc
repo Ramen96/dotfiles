@@ -1,0 +1,25 @@
+MenuBar=Disabled
+
+[DetailsMode]
+PreviewSize=64
+
+[General]
+Version=202
+ViewPropsTimestamp=2025,2,27,17,11,49.18
+
+[IconsMode]
+UseSystemFont=false
+ViewFont=ZedMono NF,12,-1,5,800,0,0,0,0,0,0,0,0,0,0,1,Regular
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[UiSettings] 
+ColorScheme=Theme Name
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail,gdk-pixbuf-thumbnailer
