@@ -1,7 +1,7 @@
 # Dotfiles
 
 # 1) Packages
-1. `sudo pacman -S zsh fastfetch dosfstools htop unzip waybar vim nwg-look hyprpaper hypridle hyprlock nerd-fonts steam discord libreoffice-still dolphin wofi kitty ghostty`
+1. `sudo pacman -S zsh fastfetch dosfstools htop unzip waybar libsecret gnome-keyring libgnome-keyring vim nwg-look hyprpaper hypridle hyprlock nerd-fonts steam discord libreoffice-still dolphin wofi kitty ghostty`
 2. `yay -S visual-studio-code-bin brave-bin rog-control-center sddm-theme-tokyo-night-git`
 3. `flatpaks postman pgadmin4`
 
