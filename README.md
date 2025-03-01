@@ -54,14 +54,11 @@
 1.
     ```
     sudo pacman -Syu
-    sudo pacman -S base-devel
-    ```
-2. 
-    ```
+    sudo pacman -S git base-devel
     sudo pacman -S git
     git clone https://aur.archlinux.org/yay.git
-    ```
-3.
-    ```
     cd yay
     makepkg -si
+    cd ..
+    rm -rf yay
+    ```
