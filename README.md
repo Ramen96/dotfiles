@@ -62,3 +62,5 @@
     cd ..
     rm -rf yay
     ```
+# Kvantum Themes
+[WhiteSur Kvantum](https://store.kde.org/p/1398841)
