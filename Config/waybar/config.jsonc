@@ -26,7 +26,7 @@
         // "idle_inhibitor",
         "pulseaudio",
         // "pulseaudio/slider",
-        "network",
+        // "network",
         "power-profiles-daemon",
         "cpu",
         "memory",
@@ -52,13 +52,13 @@
         "warp-on-scroll": false,
         "format": "{icon}",
         "format-icons": {
-            "1": " ",
-            "2": " ",
-            "3": " ",
-            "4": " ",
-            "5": " ",
-            "6": " ",
-            "7": " ",
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
             "urgent": " ",
             "focused": " ",
             "default": " "
@@ -222,16 +222,17 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/power": {
-        "format" : "",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+   "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "$HOME/.config/rofi/powermenu/type-2/powermenu.sh",
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml",
+    "menu-actions": {
+        "shutdown": "shutdown",
+        "reboot": "reboot",
+        "suspend": "systemctl suspend",
+        "hibernate": "systemctl hibernate"
     }
+} 
 }
