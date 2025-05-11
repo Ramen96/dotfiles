@@ -1,11 +1,12 @@
 # Theme
-# theme = Monokai Remastered
-theme = Horizon
+#### theme = Horizon
+# theme = IC_Orange_PPL
+theme = Medallion
 
 # Font
 font-size = 14
 
 # Window
-background-opacity = 0.7
+background-opacity = 0.9
 confirm-close-surface = false
 
