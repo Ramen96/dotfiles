@@ -2,7 +2,7 @@
 
 # 1) Packages
 1. ```
-   sudo pacman -S zsh fastfetch dosfstools swaync rofi htop unzip waybar libsecret qt5-wayland qt6-wayland celluloid gnome-keyring libgnome-keyring vim nwg-look hyprland hyprpaper hypridle hyprlock kvantum nerd-fonts steam gamescope discord libreoffice-still dolphin wofi kitty ghostty acpi
+   sudo pacman -S zsh fastfetch dosfstools man-db man-pages swaync rofi htop unzip waybar libsecret qt5-wayland qt6-wayland celluloid gnome-keyring libgnome-keyring vim nwg-look hyprland hyprpaper hypridle hyprlock kvantum nerd-fonts steam gamescope discord libreoffice-still dolphin wofi kitty ghostty acpi
    ```
 2. ```
    yay -S visual-studio-code-bin brave-bin rog-control-center sddm-theme-tokyo-night-git
