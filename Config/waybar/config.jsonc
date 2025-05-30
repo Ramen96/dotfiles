@@ -235,22 +235,25 @@
     //    "suspend": "systemctl suspend",
     //    "hibernate": "systemctl hibernate"
   },
-  "custom/notification": {
+    "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
-      "notification": " ",
-      "none": " ",
-      "dnd-notification": " ",
-      "inhibited-none": " ",
-      "dnd-inhibited-none": " ",
+      "notification": "<span foreground='yellow'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='yellow'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='yellow'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='yellow'><sup></sup></span>",
+      "dnd-inhibited-none": ""
     },
     "return-type": "json",
-    "exec-if": "hyprland",
+    "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
-    "escape": true,
-  }
+    "escape": true
+  },
   } 
 }

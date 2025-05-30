@@ -1,5 +1,5 @@
 * {
-    font-family: "Overpass Nerd Font", "Zed Mono Nerd Font", "JetBrains Mono Nerd Font", FontAwesome,
+    font-family: "Overpass Nerd Font", "Zed Mono Nerd Font", "JetBrains Mono Nerd Font", "NotoSansMono Nerd Font" FontAwesome,
     Roboto, Helvetica, Arial, sans-serif;
     font-weight: bolder;
     font-size: larger;
@@ -8,7 +8,7 @@
 }
 
 window#waybar {
-    background: rgba(0,0,0,0);
+  background: rgba(0,0,0,0);
 }
 
 #clock,
