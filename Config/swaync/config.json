@@ -53,7 +53,8 @@
     "inhibitors",
     "title",
     "dnd",
-    "notifications"
+    "notifications",
+    "volume"
   ],
   "widget-config": {
     "inhibitors": {
@@ -88,6 +89,10 @@
           "update-command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
         }
       ]
+    },
+    "volume": {
+      "label": "",
+      "step": 5
     }
   }
 }

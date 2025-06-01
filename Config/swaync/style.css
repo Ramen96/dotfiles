@@ -1,19 +1,7 @@
 /* SwayNC Yellow Theme - Matching Waybar Style */
 
 /* Define colors to match Waybar theme */
-@define-color cc-bg rgb(105, 86, 24); /* Main control center background */
-@define-color noti-border-color rgba(192, 153, 26, 0.9);
-@define-color noti-bg rgba(105, 86, 24, 0.8);
-@define-color noti-bg-opaque rgba(105, 86, 24, 0.95);
-@define-color noti-bg-darker rgba(85, 70, 20, 0.9);
-@define-color noti-bg-hover rgba(135, 110, 30, 0.85);
-@define-color noti-bg-hover-opaque rgba(135, 110, 30, 0.95);
-@define-color noti-bg-focus rgba(145, 120, 35, 0.9);
-@define-color noti-close-bg rgba(255, 255, 255, 0.1);
-@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
-@define-color text-color #fff8d3;
-@define-color text-color-disabled rgb(180, 180, 170);
-@define-color bg-selected rgba(255, 255, 255, 0.85);
+@import url('../themes/theme.css');
 
 * {
     font-family: "Overpass Nerd Font", "Zed Mono Nerd Font", "JetBrains Mono Nerd Font", FontAwesome,
@@ -59,9 +47,10 @@
 
 .notification-row .notification-background .notification {
   /* The actual notification */
-  border-radius: 25px;
+  border-radius: 10px;
   border: 1px solid @noti-border-color;
   padding: 0;
+  margin: 10px;
   transition: background 0.15s ease-in-out;
   background: @noti-bg;
 }
@@ -155,7 +144,7 @@
 
 .notification-row .notification-background .notification .notification-default-action .notification-content progressbar trough {
   background-color: @noti-bg-darker;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content progressbar progress {
@@ -232,7 +221,7 @@
 .control-center {
   background: @cc-bg;
   color: @text-color;
-  border-radius: 15px;
+  border-radius: 10px;
   border: solid @noti-border-color 1px;
   margin: 2rem;
 }
@@ -310,7 +299,7 @@
 
 .widget-dnd > switch {
   font-size: initial;
-  border-radius: 25px;
+  border-radius: 15px;
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
