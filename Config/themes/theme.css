@@ -1,0 +1,16 @@
+
+@define-color cc-bg rgb(60, 64, 72); /* Darker gray-blue for main control center background */
+@define-color noti-border-color rgb(255, 120, 100); /* Coral border for subtle pop */
+@define-color noti-bg rgb(60, 64, 72); /* Matches cc-bg */
+@define-color noti-bg-opaque rgb(60, 64, 72); /* Same as noti-bg for consistency */
+@define-color noti-bg-darker rgb(50, 54, 62); /* Slightly darker for depth */
+@define-color noti-bg-hover rgb(80, 84, 92); /* Lighter gray-blue for hover */
+@define-color noti-bg-hover-opaque rgb(80, 84, 92); /* Same as hover for consistency */
+@define-color noti-bg-focus rgb(255, 140, 120); /* Warm coral for focus states */
+@define-color noti-close-bg rgb(230, 230, 230); /* Light gray for close button */
+@define-color noti-close-bg-hover rgb(245, 245, 245); /* Brighter gray for close hover */
+@define-color text-color rgb(245, 232, 211); /* Creamy off-white for text */
+@define-color text-color-disabled rgb(150, 155, 165); /* Muted gray-blue for disabled text */
+@define-color bg-selected rgb(255, 140, 120); /* Coral for selected elements */
+
+
