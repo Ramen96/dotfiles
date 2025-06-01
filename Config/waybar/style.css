@@ -1,9 +1,14 @@
+/* Waybar Theme - Matching System-Wide Theme */
+
+/* Import system-wide theme colors */
+@import url('../themes/theme.css');
+
 * {
     font-family: "Overpass Nerd Font", "Zed Mono Nerd Font", "JetBrains Mono Nerd Font", "NotoSansMono Nerd Font";
     font-weight: bolder;
     font-size: larger;
-    border-radius: 5px;
     font-size: 14px;
+    border-radius: 5px;
 }
 
 window#waybar {
@@ -29,7 +34,7 @@ window#waybar {
 #window,
 #custom-notification,
 #mpd {
-    color: #fff8d3;
+    color: @text-primary;
     padding: 0 10px;
     margin: 0 4px;
 }
@@ -38,12 +43,10 @@ window#waybar {
 #workspaces,
 #window,
 .modules-right {
-    background: rgba(105, 86, 24, 0.829);
-    border: solid rgba(192, 153, 26, 0.9) 1px;
+    background: @surface-primary;
+    border: solid @accent-border 1px;
     border-radius: 25px;
 }
-
-
 
 @keyframes slideWorkspace {
     0% {
@@ -68,16 +71,19 @@ window#waybar {
     }
 }
 
+#workspaces button {
+  color: @accent-selected;
+}
 
 #workspaces button.active {
-    background-color: rgba(255, 255, 255, 0.85);
-    color: rgb(0, 0, 0);
+    background-color: rgb(30, 30, 30);
+    color: @text-primary;
     border-radius: 100%;
     animation: slideWorkspace 0.5s cubic-bezier(0.25, 1.2, 0.5, 1) forwards;
 }
 
 #workspaces button:hover {
-    background-color: rgba(0, 0, 0, 0.85);
-    color: rgb(255, 255, 255);
+    background-color: @surface-dark;
+    color: @accent-border;
     border-radius: 100%;
 }

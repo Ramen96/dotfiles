@@ -16,7 +16,7 @@
 }
 
 .notification-row:focus, .notification-row:hover {
-  background: @noti-bg-focus;
+  background: @accent-focus;
 }
 
 .notification-row .notification-background {
@@ -25,8 +25,8 @@
 
 .notification-row .notification-background .close-button {
   /* The notification Close Button */
-  background: @noti-close-bg;
-  color: @text-color;
+  background: @button-primary;
+  color: @text-primary;
   text-shadow: none;
   padding: 0;
   border-radius: 100%;
@@ -40,7 +40,7 @@
 
 .notification-row .notification-background .close-button:hover {
   box-shadow: none;
-  background: @noti-close-bg-hover;
+  background: @button-hover;
   transition: background 0.15s ease-in-out;
   border: none;
 }
@@ -48,11 +48,11 @@
 .notification-row .notification-background .notification {
   /* The actual notification */
   border-radius: 10px;
-  border: 1px solid @noti-border-color;
+  border: 1px solid @accent-border;
   padding: 0;
   margin: 10px;
   transition: background 0.15s ease-in-out;
-  background: @noti-bg;
+  background: @surface-primary;
 }
 
 .notification-row .notification-background .notification.critical {
@@ -68,14 +68,14 @@
   box-shadow: none;
   background: transparent;
   border: none;
-  color: @text-color;
+  color: @text-primary;
   transition: background 0.15s ease-in-out;
 }
 
 .notification-row .notification-background .notification .notification-action:hover,
 .notification-row .notification-background .notification .notification-default-action:hover {
   -gtk-icon-effect: none;
-  background: @noti-bg-hover;
+  background: @surface-hover;
 }
 
 .notification-row .notification-background .notification .notification-default-action {
@@ -114,7 +114,7 @@
   font-size: 16px;
   font-weight: bold;
   background: transparent;
-  color: @text-color;
+  color: @text-primary;
   text-shadow: none;
 }
 
@@ -123,7 +123,7 @@
   font-size: 14px;
   font-weight: bold;
   background: transparent;
-  color: @text-color;
+  color: @text-primary;
   text-shadow: none;
   margin-right: 30px;
 }
@@ -133,7 +133,7 @@
   font-size: 14px;
   font-weight: normal;
   background: transparent;
-  color: @text-color;
+  color: @text-primary;
   text-shadow: none;
 }
 
@@ -143,7 +143,7 @@
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content progressbar trough {
-  background-color: @noti-bg-darker;
+  background-color: @surface-dark;
   border-radius: 5px;
 }
 
@@ -166,37 +166,37 @@
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-entry {
-  background: @noti-bg-darker;
-  color: @text-color;
-  caret-color: @text-color;
-  border: 1px solid @noti-border-color;
+  background: @surface-dark;
+  color: @text-primary;
+  caret-color: @text-primary;
+  border: 1px solid @accent-border;
   border-radius: 25px;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
   margin-left: 4px;
-  background: @noti-bg;
-  border: 1px solid @noti-border-color;
+  background: @surface-primary;
+  border: 1px solid @accent-border;
   border-radius: 25px;
-  color: @text-color;
+  color: @text-primary;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:disabled {
   background: initial;
-  color: @text-color-disabled;
-  border: 1px solid @noti-border-color;
+  color: @text-disabled;
+  border: 1px solid @accent-border;
   border-color: transparent;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:hover {
-  background: @noti-bg-hover;
+  background: @surface-hover;
 }
 
 .notification-row .notification-background .notification .notification-action {
   /* The alternative actions below the default action */
-  border-top: 1px solid @noti-border-color;
+  border-top: 1px solid @accent-border;
   border-radius: 0px;
-  border-right: 1px solid @noti-border-color;
+  border-right: 1px solid @accent-border;
 }
 
 .notification-row .notification-background .notification .notification-action:first-child {
@@ -210,25 +210,25 @@
 }
 
 .notification-group.collapsed .notification-row .notification {
-  background-color: @noti-bg-opaque;
+  background-color: @surface-primary-opaque;
 }
 
 .notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
-  background-color: @noti-bg-hover-opaque;
+  background-color: @surface-hover-opaque;
 }
 
 /* Control Center */
 .control-center {
-  background: @cc-bg;
-  color: @text-color;
+  background: @surface-base;
+  color: @text-primary;
   border-radius: 10px;
-  border: solid @noti-border-color 1px;
+  border: solid @accent-border 1px;
   margin: 2rem;
 }
 
 /* Make sure the tray background is properly colored */
 .control-center-list-placeholder {
-  color: @text-color;
+  color: @text-primary;
   background: transparent;
 }
 
@@ -238,13 +238,13 @@
 
 /* Ensuring all panel backgrounds have the yellow theme */
 .panel {
-  background: @cc-bg;
-  color: @text-color;
+  background: @surface-base;
+  color: @text-primary;
 }
 
 .panel-container {
-  background: @cc-bg;
-  color: @text-color;
+  background: @surface-base;
+  color: @text-primary;
 }
 
 .control-center .control-center-list .notification {
@@ -258,7 +258,7 @@
 
 .control-center .control-center-list .notification .notification-default-action:hover,
 .control-center .control-center-list .notification .notification-action:hover {
-  background-color: @noti-bg-hover;
+  background-color: @surface-hover;
 }
 
 .floating-notifications {
@@ -271,28 +271,28 @@
 
 /* Widgets */
 .widget-title {
-  color: @text-color;
+  color: @text-primary;
   margin: 8px;
   font-size: 1.5rem;
 }
 
 .widget-title > button {
   font-size: initial;
-  color: @text-color;
+  color: @text-primary;
   text-shadow: none;
-  background: @noti-bg;
-  border: 1px solid @noti-border-color;
+  background: @surface-primary;
+  border: 1px solid @accent-border;
   box-shadow: none;
   border-radius: 25px;
 }
 
 .widget-title > button:hover {
-  background: @noti-bg-hover;
+  background: @surface-hover;
 }
 
 /* DND widget */
 .widget-dnd {
-  color: @text-color;
+  color: @text-primary;
   margin: 8px;
   font-size: 1.1rem;
 }
@@ -300,18 +300,17 @@
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 15px;
-  background: @noti-bg;
-  border: 1px solid @noti-border-color;
+  background: @surface-primary;
+  border: 1px solid @accent-border;
   box-shadow: none;
 }
 
 .widget-dnd > switch:checked {
-  /* background: rgba(255, 255, 255, 0.85); */
   background: rgba(24, 24, 24, 0.959);
 }
 
 .widget-dnd > switch slider {
-  background: @noti-bg-hover;  
+  background: @surface-hover;  
   border-radius: 25px;
 }
 
@@ -322,7 +321,7 @@
 
 .widget-label > label {
   font-size: 1.1rem;
-  color: @text-color;
+  color: @text-primary;
 }
 
 /* Mpris widget */
@@ -333,14 +332,14 @@
 .widget-mpris .widget-mpris-player {
   padding: 16px;
   margin: 16px 20px;
-  background-color: @noti-bg;
+  background-color: @surface-primary;
   border-radius: 25px;
-  border: 1px solid @noti-border-color;
+  border: 1px solid @accent-border;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
 .widget-mpris .widget-mpris-player button:hover {
-  background: @noti-bg-hover;
+  background: @surface-hover;
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-album-art {
@@ -351,12 +350,12 @@
 .widget-mpris .widget-mpris-player .widget-mpris-title {
   font-weight: bold;
   font-size: 1.25rem;
-  color: @text-color;
+  color: @text-primary;
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-subtitle {
   font-size: 1.1rem;
-  color: @text-color;
+  color: @text-primary;
 }
 
 .widget-mpris .widget-mpris-player > box > button {
@@ -364,7 +363,7 @@
 }
 
 .widget-mpris .widget-mpris-player > box > button:hover {
-  background-color: @noti-bg-hover;
+  background-color: @surface-hover;
 }
 
 /* Buttons widget */
@@ -372,18 +371,17 @@
   padding: 8px;
   margin: 8px;
   border-radius: 25px;
-  background-color: @noti-bg;
-  border: 1px solid @noti-border-color;
+  background-color: @surface-primary;
+  border: 1px solid @accent-border;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
-  background: @noti-bg;
+  background: @surface-primary;
   border-radius: 25px;
-  color: @text-color;
+  color: @text-primary;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-  /* background: rgba(255, 255, 255, 0.85); */
   background: rgba(255, 255, 255, 0.85);
   color: rgb(0, 0, 0);
 }
@@ -392,31 +390,31 @@
 .widget-menubar > box > .menu-button-bar > button {
   border: none;
   background: transparent;
-  color: @text-color;
+  color: @text-primary;
 }
 
 .widget-menubar > box > .menu-button-bar > button:hover {
-  background: @noti-bg-hover;
+  background: @surface-hover;
   border-radius: 25px;
 }
 
 /* Volume widget */
 .widget-volume {
-  background-color: @noti-bg;
+  background-color: @surface-primary;
   padding: 8px;
   margin: 8px;
   border-radius: 25px;
-  border: 1px solid @noti-border-color;
+  border: 1px solid @accent-border;
 }
 
 .widget-volume > box > button {
   background: transparent;
   border: none;
-  color: @text-color;
+  color: @text-primary;
 }
 
 .widget-volume scale trough {
-  background-color: @noti-bg-darker;
+  background-color: @surface-dark;
   border-radius: 25px;
 }
 
@@ -426,29 +424,28 @@
 }
 
 .per-app-volume {
-  background-color: @noti-bg-darker;
+  background-color: @surface-dark;
   padding: 4px 8px 8px 8px;
   margin: 0px 8px 8px 8px;
   border-radius: 25px;
-  border: 1px solid @noti-border-color;
+  border: 1px solid @accent-border;
 }
 
 /* Backlight widget */
 .widget-backlight {
-  background-color: @noti-bg;
+  background-color: @surface-primary;
   padding: 8px;
   margin: 8px;
   border-radius: 25px;
-  border: 1px solid @noti-border-color;
+  border: 1px solid @accent-border;
 }
 
 .widget-backlight scale trough {
-  background-color: @noti-bg-darker;
+  background-color: @surface-dark;
   border-radius: 25px;
 }
 
 .widget-backlight scale highlight {
-  /* background-color: rgba(255, 220, 150, 0.9); */
   background-color: rgba(0, 0, 150, 0.9);
   border-radius: 25px;
 }
@@ -461,26 +458,26 @@
 
 .widget-inhibitors > button {
   font-size: initial;
-  color: @text-color;
+  color: @text-primary;
   text-shadow: none;
-  background: @noti-bg;
-  border: 1px solid @noti-border-color;
+  background: @surface-primary;
+  border: 1px solid @accent-border;
   box-shadow: none;
   border-radius: 25px;
 }
 
 .widget-inhibitors > button:hover {
-  background: @noti-bg-hover;
+  background: @surface-hover;
 }
 
 /* Custom Classes */
 .topbar-buttons > button {
   border: none;
   background: transparent;
-  color: @text-color;
+  color: @text-primary;
 }
 
 .topbar-buttons > button:hover {
-  background: @noti-bg-hover;
+  background: @surface-hover;
   border-radius: 25px;
 }
