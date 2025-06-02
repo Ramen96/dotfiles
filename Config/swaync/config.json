@@ -54,7 +54,9 @@
     "title",
     "dnd",
     "notifications",
-    "volume"
+    "backlight",
+    "volume",
+    "buttons-grid"
   ],
   "widget-config": {
     "inhibitors": {
@@ -92,6 +94,10 @@
     },
     "volume": {
       "label": "",
+      "step": 5
+    },
+    "backlight": {
+      "label": "󰃟",
       "step": 5
     }
   }
