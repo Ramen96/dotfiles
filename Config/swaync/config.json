@@ -50,20 +50,14 @@
     }
   },
   "widgets": [
-    "inhibitors",
-    "title",
     "dnd",
-    "notifications",
+    "buttons-grid",
     "backlight",
     "volume",
-    "buttons-grid"
+    "title",
+    "notifications"
   ],
   "widget-config": {
-    "inhibitors": {
-      "text": "Inhibitors",
-      "button-text": "Clear All",
-      "clear-all-button": true
-    },
     "title": {
       "text": "Notifications",
       "clear-all-button": true,
@@ -71,15 +65,6 @@
     },
     "dnd": {
       "text": "Do Not Disturb"
-    },
-    "label": {
-      "max-lines": 5,
-      "text": "Label Text"
-    },
-    "mpris": {
-      "image-size": 96,
-      "image-radius": 12,
-      "blacklist": []
     },
     "buttons-grid": {
       "actions": [
@@ -103,6 +88,28 @@
           "active": false,
           "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && wlsunset -l 40.7 -L -74.0 -t 3500 -T 6500 & || pkill wlsunset'",
           "update-command": "sh -c 'pgrep wlsunset >/dev/null && echo true || echo false'"
+        },
+        {
+          "label": "",
+          "type": "action",
+          "command": "systemctl reboot"
+        },
+        {
+          "label": "",
+          "type": "action",
+          "command": "hyprlock"
+        },
+        {
+          "label": "",
+          "type": "action",
+          "command": "systemctl poweroff"
+        },
+        {
+          "label": "󰀝",
+          "type": "toggle",
+          "active": false,
+          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio all on || nmcli radio all off'",
+          "update-command": "sh -c '[[ $(nmcli radio all | grep enabled) ]] && echo true || echo false'"
         }
       ]
     },
