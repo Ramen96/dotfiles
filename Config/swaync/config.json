@@ -93,7 +93,7 @@
           "type": "toggle",
           "active": false,
           "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && wlsunset -l 40.7 -L -74.0 -t 3500 -T 6500 & || pkill wlsunset'",
-          "update-command": "sh -c 'pgrep wlsunset >/dev/null && echo true || echo false'"
+          "update-command": "../scripts/nightshift.sh"
         },
         {
           "label": "",
