@@ -109,13 +109,6 @@
           "label": "",
           "type": "action",
           "command": "systemctl poweroff"
-        },
-        {
-          "label": "󰀝",
-          "type": "toggle",
-          "active": false,
-          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio all on || nmcli radio all off'",
-          "update-command": "sh -c '[[ $(nmcli radio all | grep enabled) ]] && echo true || echo false'"
         }
       ]
     },
