@@ -72,12 +72,12 @@ window#waybar {
 }
 
 #workspaces button {
-  color: @accent-selected;
+  color: @text-primary;
 }
 
 #workspaces button.active {
-    background-color: rgb(30, 30, 30);
-    color: @text-primary;
+    background-color: @text-primary;
+    color: @surface-dark;
     border-radius: 100%;
     animation: slideWorkspace 0.5s cubic-bezier(0.25, 1.2, 0.5, 1) forwards;
 }
