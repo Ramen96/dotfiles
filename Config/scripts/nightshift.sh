@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if pgrep wlsunset > /dev/null; then
-    kill $(pgrep wlsunset)
+if [[ $SWAYNC_TOGGLE_STATE == true ]]; then
+  wlsunset -t 3000 -T 4000 &
 else
-    wlsunset -t 3000 -T 4000 &
+  pkill -x wlsunset
 fi
