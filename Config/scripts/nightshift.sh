@@ -1,7 +1,9 @@
 #!/bin/bash
 
-if [[ $SWAYNC_TOGGLE_STATE == true ]]; then
-  wlsunset -t 3000 -T 4000 &
-else
+if pgrep -x wlsunset >/dev/null; then
+  # wlsunset is running → kill it
   pkill -x wlsunset
+else
+  # wlsunset is not running → start it
+  wlsunset -t 3000 -T 3400 &
 fi
