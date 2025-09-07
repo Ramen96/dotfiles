@@ -4,7 +4,7 @@
 
 1. **Pacman**  
    ```sh
-   sudo pacman -S zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard swaync rofi-wayland htop nerd-fonts unzip waybar libsecret qt5-wayland qt6-wayland celluloid gnome-keyring libgnome-keyring vim nwg-look hyprland hyprpaper hypridle hyprlock kvantum nerd-fonts steam gamescope discord libreoffice-still dolphin wlsunset wofi kitty ghostty acpi imagemagick ghostscript tectonic
+   sudo pacman -S zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard swaync rofi-wayland htop nerd-fonts unzip waybar libsecret qt5-wayland qt6-wayland celluloid gnome-keyring libgnome-keyring vim nwg-look hyprland hyprpaper hypridle hyprlock kvantum nerd-fonts steam gamescope discord libreoffice-still nautilus wlsunset wofi kitty ghostty acpi imagemagick ghostscript tectonic
    ```  
 
 2. **AUR (yay)**  
