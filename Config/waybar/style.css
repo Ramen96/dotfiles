@@ -1,20 +1,60 @@
-/* Waybar Theme - Matching System-Wide Theme */
+/*
+ * REFINED CYBERPUNK WAYBAR - Clean Neo-Tokyo Edition
+ * Toned-down cyberpunk styling with grouped modules
+ */
 
-/* Import system-wide theme colors */
-@import url('../themes/theme.css');
+/* Define Refined Cyberpunk Color Palette */
+@define-color bg-matrix rgb(0, 8, 16);
+@define-color surface-cyber rgb(12, 20, 32);
+@define-color surface-dark rgb(8, 15, 25);
+@define-color surface-light rgb(18, 28, 42);
 
+/* Primary accent - cyan for main elements */
+@define-color accent-primary rgb(0, 255, 255);
+@define-color accent-primary-dim rgb(0, 200, 200);
+
+/* Secondary accent - subtle magenta for highlights */
+@define-color accent-secondary rgb(200, 100, 255);
+@define-color accent-secondary-dim rgb(150, 80, 200);
+
+/* Status colors */
+@define-color status-good rgb(0, 255, 127);
+@define-color status-warning rgb(255, 180, 0);
+@define-color status-critical rgb(255, 80, 100);
+
+/* Text Colors */
+@define-color text-primary rgb(200, 240, 255);
+@define-color text-secondary rgb(150, 200, 220);
+@define-color text-dim rgb(120, 150, 170);
+
+/* Base Font Configuration */
 * {
-    font-family: "Overpass Nerd Font", "Zed Mono Nerd Font", "JetBrains Mono Nerd Font", "NotoSansMono Nerd Font";
-    font-weight: bolder;
-    font-size: larger;
-    font-size: 14px;
-    border-radius: 5px;
+    font-family: "JetBrains Mono Nerd Font", "Fira Code Nerd Font", "Source Code Pro", "DejaVu Sans Mono", monospace;
+    font-weight: 500;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
 }
 
+/* Main Window */
 window#waybar {
-  background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
 }
 
+/* Module Groups */
+.module-group {
+    background: linear-gradient(135deg, 
+        rgba(12, 20, 32, 0.85), 
+        rgba(18, 28, 42, 0.85));
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 8px;
+    margin: 3px 4px;
+    padding: 2px;
+    box-shadow: 0 0 4px rgba(0, 255, 255, 0.1);
+}
+
+/* Universal Module Styling - Individual modules within groups */
 #clock,
 #battery,
 #cpu,
@@ -24,66 +64,146 @@ window#waybar {
 #backlight,
 #pulseaudio,
 #network,
-#wireplumber,
 #tray,
-#mode,
-#idle_inhibitor,
-#custom-power,
-#power-profiles-daemon,
-#pulseaudio-slider,
-#window,
 #custom-notification,
-#mpd {
+#custom-system-group,
+#custom-media-group,
+#custom-status-group {
+    background: transparent;
     color: @text-primary;
-    padding: 0 10px;
-    margin: 0 4px;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 7px;
+    margin: 1px 2px;
+    transition: all 0.2s ease;
 }
 
-#clock,
-#workspaces,
-#window,
-.modules-right {
-    background: @surface-primary;
-    border: solid @accent-border 1px;
-    border-radius: 25px;
+/* Hover Effects - Subtle */
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#network:hover,
+#custom-notification:hover {
+    background: rgba(0, 255, 255, 0.1);
+    color: @accent-primary;
 }
 
-@keyframes slideWorkspace {
-    0% {
-        margin-left: -50px; 
-        opacity: 0.5;      
-    }
-    40% {
-        margin-left: 12px; 
-        opacity: 1;
-    }
-    60% {
-        margin-left: -6px;
-    }
-    80% {
-        margin-left: 3px;  
-    }
-    90% {
-        margin-left: -1px;
-    }
-    100% {
-        margin-left: 0px; 
-    }
+/* Workspaces - Keep prominent */
+#workspaces {
+    background: linear-gradient(90deg, 
+        rgba(12, 20, 32, 0.9), 
+        rgba(18, 28, 42, 0.9));
+    border: 1px solid @accent-primary;
+    border-radius: 8px;
+    padding: 2px;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+    margin: 3px 6px;
 }
 
 #workspaces button {
-  color: @text-primary;
-}
-
-#workspaces button.active {
-    background-color: @text-primary;
-    color: @surface-dark;
-    border-radius: 100%;
-    animation: slideWorkspace 0.5s cubic-bezier(0.25, 1.2, 0.5, 1) forwards;
+    background: transparent;
+    color: @text-secondary;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin: 1px;
+    transition: all 0.2s ease;
+    font-weight: 600;
 }
 
 #workspaces button:hover {
-    background-color: @surface-dark;
-    color: @accent-border;
-    border-radius: 100%;
+    background: rgba(0, 255, 255, 0.1);
+    color: @accent-primary;
+}
+
+#workspaces button.active {
+    background: @accent-primary;
+    color: @bg-matrix;
+    font-weight: 700;
+    box-shadow: 0 0 4px rgba(0, 255, 255, 0.3);
+}
+
+/* Window Title */
+#system-group,
+#window {
+    background: rgba(12, 20, 32, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 6px;
+    color: @text-secondary;
+    font-weight: 400;
+    font-style: italic;
+    padding: 4px 12px;
+    margin: 3px 4px;
+}
+
+/* Clock - Special treatment as primary time display */
+#clock {
+    background: linear-gradient(90deg, 
+        rgba(12, 20, 32, 0.9), 
+        rgba(18, 28, 42, 0.9));
+    border: 1px solid @accent-primary;
+    color: @accent-primary;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 4px 12px;
+    margin: 3px 4px;
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+}
+
+/* System Status Group */
+#custom-system-group {
+    background: rgba(12, 20, 32, 0.8);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin: 3px 2px;
+}
+
+/* Battery States */
+#battery.warning {
+    color: @status-warning;
+}
+
+#battery.critical {
+    color: @status-critical;
+}
+
+/* Temperature States */
+#temperature.critical {
+    color: @status-critical;
+}
+
+/* Network States */
+#network.disconnected {
+    color: @status-critical;
+}
+
+/* Audio States */
+#pulseaudio.muted {
+    color: @text-dim;
+    opacity: 0.7;
+}
+
+/* Tray */
+#tray {
+    background: rgba(12, 20, 32, 0.8);
+    border: 1px solid rgba(200, 100, 255, 0.3);
+    border-radius: 6px;
+    padding: 2px 6px;
+    margin: 3px 4px;
+}
+
+/* Tooltip */
+tooltip {
+    background: @surface-cyber;
+    border: 1px solid @accent-primary;
+    border-radius: 6px;
+    color: @text-primary;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+    font-size: 12px;
 }
