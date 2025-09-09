@@ -128,7 +128,8 @@ window#waybar {
 }
 
 /* Window Title */
-#system-group,
+#mpris,
+#media-group,
 #window {
     background: rgba(12, 20, 32, 0.8);
     border: 1px solid rgba(0, 255, 255, 0.2);

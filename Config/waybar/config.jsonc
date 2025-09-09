@@ -5,25 +5,22 @@
   "margin-left": 15,
   "margin-right": 15,
   "margin-bottom": 0,
-
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/window"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "mpris"
+  ],
   "modules-right": [
-    "group/system-group",
     "group/media-group",
-    "network",
-    "battery",
+    "group/system-group",
     "clock",
     "tray"
   ],
-
   // =======================
   // Workspaces & Window
   // =======================
-
   "hyprland/workspaces": {
     "persistent-workspaces": {
       "1": [], "2": [], "3": [], "4": [], "5": [], "6": []
@@ -44,7 +41,6 @@
       "default": "○"
     }
   },
-
   "hyprland/window": {
     "max-length": 40,
     "tooltip": true,
@@ -58,34 +54,33 @@
       "": "Desktop"
     }
   },
-
   // =======================
   // Grouped Modules
   // =======================
-
   "group/system-group": {
     "class": "module-group",
     "orientation": "horizontal",
     "modules": [
-      "cpu",
-      "memory",
+      // "cpu",
+      // "memory",
       "temperature",
-      "pulseaudio",
+      "battery",
     ]
   },
-
   "group/media-group": {
     "class": "module-group",
     "orientation": "horizontal",
     "modules": [
-      "backlight"
+      "backlight",
+      "network",
+      "custom/notification",
+      "pulseaudio",
+      
     ]
   },
-
   // =======================
   // Individual Native Modules
   // =======================
-
   "cpu": {
     "interval": 5,
     "format": "󰘚 {usage}%",
@@ -94,7 +89,6 @@
       "critical": 90
     }
   },
-
   "memory": {
     "interval": 5,
     "format": "󰍛 {percentage}%",
@@ -103,7 +97,6 @@
       "critical": 90
     }
   },
-
   "temperature": {
     "thermal-zone": 0,
     "critical-threshold": 80,
@@ -111,36 +104,37 @@
     "format-critical": "󰸁 {temperatureC}°C",
     "format": "{temperatureC}°C"
   },
-
   "pulseaudio": {
     "scroll-step": 2,
-    "format": "󰕾 {volume}%",
+    "format": "{icon}",
     "format-muted": "󰖁",
-    "on-click": "pavucontrol",
-    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+    "format-icons": {
+        "headphone": "󰋋",
+        "headset": "󰋎",
+        "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
   },
-
   "backlight": {
     "device": "intel_backlight",
-    "format": "{icon} {percent}%",
+    "format": "{icon}",
     "format-icons": ["󰃞", "󰃟", "󰃠"],
     "on-scroll-up": "brightnessctl set +5%",
     "on-scroll-down": "brightnessctl set 5%-",
     "tooltip": true,
     "tooltip-format": "Brightness: {percent}%\nScroll to adjust"
-},
-
+  },
   "network": {
     "interval": 10,
-    "format-wifi": "󰤨 {signalStrength}%",
+    "format-wifi": "{icon}",
     "format-ethernet": "󰈀",
+    "format-icons": {
+      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+    },
     "tooltip-format": "{essid}\n{ipaddr}/{cidr}\n↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
     "format-disconnected": "󰤭",
     "on-click": "nm-connection-editor"
   },
-
   "battery": {
     "states": {
       "warning": 30,
@@ -152,14 +146,45 @@
     "format-full": "󰁹 Full",
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
   },
-
   "clock": {
     "interval": 1,
     "format": "󰥔 {:%H:%M:%S}",
     "format-alt": "󰃭 {:%Y-%m-%d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
-
+  
+  "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "⏸ {title} - {artist}",
+    "player-icons": {
+      "default": "▶",
+    },
+    "max-length": 40,
+    "on-click": "playerctl play-pause"
+  },
+  // =======================
+  // SwayNC Notification Center
+  // =======================
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󰂠",
+      "inhibited-none": "󰂠",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
   "tray": {
     "icon-size": 16,
     "spacing": 6,
