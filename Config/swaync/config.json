@@ -5,7 +5,6 @@
   "layer": "overlay",
   "control-center-layer": "top",
   "layer-shell": true,
-  "layer-shell-cover-screen": true,
   "cssPriority": "application",
   "control-center-margin-top": 0,
   "control-center-margin-bottom": 0,
@@ -31,24 +30,6 @@
   "hide-on-action": true,
   "text-empty": "No Notifications",
   "script-fail-notify": true,
-  "scripts": {
-    "example-script": {
-      "exec": "echo 'Do something...'",
-      "urgency": "Normal"
-    },
-    "example-action-script": {
-      "exec": "echo 'Do something actionable!'",
-      "urgency": "Normal",
-      "run-on": "action"
-    }
-  },
-  "notification-visibility": {
-    "example-name": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "Spotify"
-    }
-  },
   "widgets": [
     "dnd",
     "mpris",
@@ -69,51 +50,51 @@
     },
     "mpris": {
       "image-size": 96,
-      "image-radius": 12,
+      "image-radius": 8,
       "blacklist": []
     },
     "buttons-grid": {
       "actions": [
         {
-          "label": "󰤨 ",
+          "label": "󰤨",
           "type": "toggle",
           "active": true,
           "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
           "update-command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
         },
         {
-          "label": "",
+          "label": "󰂯",
           "type": "toggle",
           "active": true,
           "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power on || bluetoothctl power off'",
           "update-command": "sh -c '[[ $(bluetoothctl show | grep \"Powered: yes\") ]] && echo true || echo false'"
         },
         {
-          "label": "",
+          "label": "󰖔",
           "type": "toggle",
           "active": false,
-          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && wlsunset -l 40.7 -L -74.0 -t 3500 -T 6500 & || pkill wlsunset'",
-          "update-command": "../scripts/nightshift.sh"
+          "command": "~/.config/scripts/nightshift.sh",
+          "update-command": "~/.config/scripts/nightshift-check.sh"
         },
         {
-          "label": "",
-          "type": "action",
-          "command": "systemctl reboot"
-        },
-        {
-          "label": "",
+          "label": "󰍃",
           "type": "action",
           "command": "hyprlock"
         },
         {
-          "label": "",
+          "label": "󰜉",
+          "type": "action",
+          "command": "systemctl reboot"
+        },
+        {
+          "label": "󰐥",
           "type": "action",
           "command": "systemctl poweroff"
         }
       ]
     },
     "volume": {
-      "label": "",
+      "label": "󰕾",
       "step": 5
     },
     "backlight": {

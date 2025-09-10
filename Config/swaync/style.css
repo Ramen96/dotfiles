@@ -1,37 +1,30 @@
-/* SwayNC Toned-Down Cyberpunk Theme */
+/* SwayNC Clean Cyberpunk Theme */
 
-/* Define Muted Cyberpunk Color Palette */
-@define-color bg-subtle rgb(0, 5, 10); /* Solid background color */
+@define-color bg-subtle rgb(0, 5, 10);
 @define-color surface-calm rgb(10, 15, 25);
 @define-color surface-dark rgb(6, 12, 20);
 @define-color surface-light rgb(15, 22, 35);
 
-/* Primary accent - soft cyan */
 @define-color accent-primary rgb(0, 190, 190);
 @define-color accent-primary-dim rgb(0, 150, 150);
-
-/* Secondary accent - subtle magenta */
 @define-color accent-secondary rgb(150, 90, 200);
-@define-color accent-secondary-dim rgb(120, 70, 160);
 
-/* Status colors */
 @define-color status-good rgb(0, 180, 100);
 @define-color status-warning rgb(200, 150, 0);
 @define-color status-critical rgb(200, 60, 80);
 
-/* Text Colors */
 @define-color text-primary rgb(220, 240, 255);
 @define-color text-secondary rgb(170, 210, 230);
 @define-color text-dim rgb(140, 170, 190);
 
-/* Base Font Configuration */
 * {
-    font-family: "JetBrains Mono Nerd Font", "Fira Code Nerd Font", "Source Code Pro", "DejaVu Sans Mono", monospace;
+    font-family: "JetBrains Mono Nerd Font", "Fira Code Nerd Font", "Source Code Pro", monospace;
     font-weight: 500;
     font-size: 13px;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
+/* Notifications */
 .notification-row {
     outline: none;
 }
@@ -40,16 +33,10 @@
     background: rgba(0, 255, 255, 0.05);
 }
 
-.notification-row .notification-background {
-    padding: 6px 12px;
-}
-
 .notification-row .notification-background .close-button {
-    background: linear-gradient(135deg, @surface-calm, @surface-light);
+    background: @surface-calm;
     color: @accent-primary;
-    text-shadow: none;
-    padding: 0;
-    border-radius: 100%;
+    border-radius: 50%;
     margin-top: 5px;
     margin-right: 5px;
     box-shadow: 0 0 4px rgba(0, 190, 190, 0.2);
@@ -59,256 +46,67 @@
 }
 
 .notification-row .notification-background .close-button:hover {
-    box-shadow: 0 0 8px rgba(0, 190, 190, 0.4);
     background: @accent-primary;
     color: @bg-subtle;
-    transition: all 0.2s ease;
-    border: 1px solid @accent-primary;
+    border-color: @accent-primary;
 }
 
 .notification-row .notification-background .notification {
-    background: linear-gradient(135deg,
-        rgba(10, 15, 25, 0.8),
-        rgba(15, 22, 35, 0.8));
+    background: @surface-calm;
     border: 1px solid rgba(0, 190, 190, 0.2);
-    border-radius: 8px;
-    padding: 0;
+    border-radius: 6px;
     margin: 10px;
-    transition: all 0.2s ease;
     box-shadow: 0 0 6px rgba(0, 190, 190, 0.1);
 }
 
 .notification-row .notification-background .notification.critical {
     border: 2px solid @status-critical;
-    background: linear-gradient(135deg,
-        rgba(30, 10, 15, 0.8),
-        rgba(40, 15, 20, 0.8));
     box-shadow: 0 0 12px rgba(200, 60, 80, 0.3);
-}
-
-.notification-row .notification-background .notification .notification-action,
-.notification-row .notification-background .notification .notification-default-action {
-    padding: 6px;
-    margin: 0;
-    box-shadow: none;
-    background: transparent;
-    border: none;
-    color: @text-primary;
-    transition: all 0.2s ease;
-}
-
-.notification-row .notification-background .notification .notification-action:hover,
-.notification-row .notification-background .notification .notification-default-action:hover {
-    -gtk-icon-effect: none;
-    background: rgba(0, 190, 190, 0.1);
-    color: @accent-primary;
-}
-
-.notification-row .notification-background .notification .notification-default-action {
-    border-radius: 6px;
-}
-
-.notification-row .notification-background .notification .notification-default-action:not(:only-child) {
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content {
-    background: transparent;
-    border-radius: 6px;
-    padding: 6px;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content .image {
-    -gtk-icon-effect: none;
-    border-radius: 6px;
-    margin: 4px;
-    border: 1px solid rgba(0, 190, 190, 0.2);
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content .app-icon {
-    -gtk-icon-effect: none;
-    -gtk-icon-shadow: 0 0 4px rgba(0, 190, 190, 0.3);
-    margin: 6px;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
     font-size: 15px;
     font-weight: 600;
-    background: transparent;
     color: @accent-primary;
-    text-shadow: 0 0 4px rgba(0, 190, 190, 0.2);
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+    color: @text-primary;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
     font-size: 12px;
-    font-weight: 500;
-    background: transparent;
     color: @text-secondary;
-    text-shadow: none;
-    margin-right: 30px;
 }
 
-.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
-    font-size: 13px;
-    font-weight: 400;
-    background: transparent;
-    color: @text-primary;
-    text-shadow: none;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content progressbar {
-    margin-top: 6px;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content progressbar trough {
-    background-color: @surface-dark;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 190, 190, 0.2);
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content progressbar progress {
-    background: linear-gradient(90deg, @accent-primary, @accent-secondary);
-    border-radius: 4px;
-    box-shadow: 0 0 2px rgba(0, 190, 190, 0.2);
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content .body-image {
-    margin-top: 6px;
-    background-color: @surface-calm;
-    border: 1px solid rgba(0, 190, 190, 0.3);
-    border-radius: 6px;
-    -gtk-icon-effect: none;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply {
-    margin-top: 6px;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-entry {
-    background: @surface-dark;
-    color: @text-primary;
-    caret-color: @accent-primary;
-    border: 1px solid rgba(0, 190, 190, 0.3);
-    border-radius: 6px;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
-    margin-left: 6px;
-    background: linear-gradient(135deg, @surface-calm, @surface-light);
-    border: 1px solid rgba(0, 190, 190, 0.3);
-    border-radius: 6px;
-    color: @text-primary;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:disabled {
-    background: @surface-dark;
-    color: @text-dim;
-    border: 1px solid rgba(0, 190, 190, 0.1);
-    border-color: transparent;
-}
-
-.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:hover {
-    background: rgba(0, 190, 190, 0.1);
-    color: @accent-primary;
-}
-
-.notification-row .notification-background .notification .notification-action {
-    border-top: 1px solid rgba(0, 190, 190, 0.3);
-    border-radius: 0px;
-    border-right: 1px solid rgba(0, 190, 190, 0.3);
-}
-
-.notification-row .notification-background .notification .notification-action:first-child {
-    border-bottom-left-radius: 6px;
-}
-
-.notification-row .notification-background .notification .notification-action:last-child {
-    border-bottom-right-radius: 6px;
-    border-right: none;
-}
-
-.notification-group.collapsed .notification-row .notification {
-    background: linear-gradient(135deg,
-        rgba(10, 15, 25, 0.9),
-        rgba(15, 22, 35, 0.9));
-}
-
-.notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
-    background: rgba(0, 190, 190, 0.05);
-}
-
-/* Control Center - Removed transparency */
+/* Control Center */
 .control-center {
     background-color: @bg-subtle;
     color: @text-primary;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid @accent-primary;
     margin: 2rem;
     box-shadow: 0 0 20px rgba(0, 190, 190, 0.2);
 }
 
-.control-center-list-placeholder {
-    color: @text-secondary;
-    background: transparent;
-}
-
-.control-center .control-center-list {
-    background: transparent;
-}
-
-.panel {
-    background: @surface-calm;
-    color: @text-primary;
-}
-
-.panel-container {
-    background: @surface-calm;
-    color: @text-primary;
-}
-
-.control-center .control-center-list .notification {
-    box-shadow: 0 0 8px rgba(0, 190, 190, 0.1);
-}
-
-.control-center .control-center-list .notification .notification-default-action,
-.control-center .control-center-list .notification .notification-action {
-    transition: all 0.2s ease;
-}
-
-.control-center .control-center-list .notification .notification-default-action:hover,
-.control-center .control-center-list .notification .notification-action:hover {
-    background: rgba(0, 190, 190, 0.1);
-    color: @accent-primary;
-}
-
-/* Floating Notifications - Removed transparency */
-.floating-notifications {
-    background-color: transparent;
-}
-
 .floating-notifications .notification {
-    background-color: @surface-calm; /* Solid background for floating notifications */
+    background-color: @surface-calm;
     box-shadow: 0 0 12px rgba(0, 190, 190, 0.2);
 }
 
-/* Widgets */
+/* Widget Title */
 .widget-title {
     color: @accent-primary;
     margin: 8px;
     font-size: 1.3rem;
     font-weight: 600;
-    text-shadow: 0 0 4px rgba(0, 190, 190, 0.3);
 }
 
 .widget-title > button {
-    font-size: 13px;
     color: @text-primary;
-    text-shadow: none;
-    background: linear-gradient(135deg, @surface-calm, @surface-light);
+    background: @surface-calm;
     border: 1px solid rgba(0, 190, 190, 0.3);
-    box-shadow: 0 0 4px rgba(0, 190, 190, 0.1);
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 .widget-title > button:hover {
@@ -316,117 +114,76 @@
     color: @accent-primary;
 }
 
-/* DND widget - New Style */
+/* DND Widget - Clean and Simple */
 .widget-dnd {
     color: @text-primary;
     margin: 8px;
-    font-size: 1.1rem;
+    padding: 8px 12px;
+    font-size: 1rem;
+    background: @surface-calm;
+    border: 1px solid rgba(0, 190, 190, 0.3);
+    border-radius: 4px;
 }
 
 .widget-dnd > switch {
-    min-width: 60px; /* Make the switch wider */
+    min-width: 48px;
     min-height: 24px;
-    font-size: initial;
-    border-radius: 12px; /* A more pill-like shape */
+    border-radius: 12px;
     background: @surface-dark;
-    border: 1px solid @accent-primary-dim; /* Solid accent border */
-    box-shadow: inset 0 0 4px @bg-subtle;
-    transition: all 0.3s ease;
+    border: 1px solid @accent-primary-dim;
 }
 
 .widget-dnd > switch:checked {
-    background: @accent-primary; /* Solid accent color when checked */
+    background: @accent-primary;
     border-color: @accent-primary;
-    box-shadow: 0 0 8px @accent-primary; /* Glowing effect */
 }
 
 .widget-dnd > switch slider {
-    background: @text-primary; /* Solid color for the slider itself */
-    border-radius: 100%; /* Round slider */
-    border: none;
-    transition: all 0.3s ease;
+    background: @text-primary;
+    border-radius: 50%;
     min-width: 18px;
     min-height: 18px;
+    margin: 2px;
 }
 
 .widget-dnd > switch:checked slider {
-    background: @bg-subtle; /* Slider changes color when checked */
+    background: @bg-subtle;
 }
 
-/* Label widget */
-.widget-label {
-    margin: 8px;
-}
-
-.widget-label > label {
-    font-size: 1.1rem;
-    color: @text-primary;
-}
-
-/* Mpris widget */
-.widget-mpris {
-}
-
+/* MPRIS */
 .widget-mpris .widget-mpris-player {
-    padding: 16px;
+    padding: 12px;
     margin: 8px 8px 0px;
-    background: linear-gradient(135deg, @surface-calm, @surface-light);
-    border-radius: 8px;
-    border: 1px solid rgba(0, 190, 190, 0.3);
-    box-shadow: 0 0 8px rgba(0, 190, 190, 0.15);
-}
-
-.widget-mpris .widget-mpris-player button:hover {
-    background: rgba(0, 190, 190, 0.1);
-    color: @accent-primary;
-}
-
-.widget-mpris .widget-mpris-player .widget-mpris-album-art {
+    background: @surface-calm;
     border-radius: 6px;
-    border: 1px solid rgba(0, 190, 190, 0.2);
-    box-shadow: 0 0 8px rgba(0, 190, 190, 0.2);
+    border: 1px solid rgba(0, 190, 190, 0.3);
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-title {
     font-weight: 600;
-    font-size: 1.1rem;
     color: @accent-primary;
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-subtitle {
-    font-size: 1rem;
     color: @text-secondary;
 }
 
-.widget-mpris .widget-mpris-player > box > button {
-    border-radius: 6px;
-    border: 1px solid rgba(0, 190, 190, 0.2);
-}
-
-.widget-mpris .widget-mpris-player > box > button:hover {
-    background: rgba(0, 190, 190, 0.1);
-    color: @accent-primary;
-}
-
-/* Buttons widget */
+/* Buttons Grid */
 .widget-buttons-grid {
     padding: 8px;
     margin: 8px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, @surface-calm, @surface-light);
+    background: @surface-calm;
     border: 1px solid rgba(0, 190, 190, 0.3);
-    box-shadow: 0 0 8px rgba(0, 190, 190, 0.1);
+    border-radius: 6px;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
     background: @surface-dark;
     border: 1px solid rgba(0, 190, 190, 0.2);
-    border-radius: 6px;
-    margin: 4px;
-    padding: 12px 20px;
-    min-width: 20px;
+    border-radius: 4px;
+    margin: 3px;
+    padding: 8px 12px;
     color: @text-primary;
-    transition: all 0.2s ease;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
@@ -437,115 +194,42 @@
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
     background: @accent-primary;
     color: @bg-subtle;
-    font-weight: 600;
-    box-shadow: 0 0 6px rgba(0, 190, 190, 0.4);
 }
 
-/* Menubar widget */
-.widget-menubar > box > .menu-button-bar > button {
-    border: none;
-    background: transparent;
-    color: @text-primary;
-}
-
-.widget-menubar > box > .menu-button-bar > button:hover {
-    background: rgba(0, 190, 190, 0.1);
-    color: @accent-primary;
-    border-radius: 6px;
-}
-
-/* Volume widget */
+/* Volume */
 .widget-volume {
-    background: linear-gradient(135deg, @surface-calm, @surface-light);
+    background: @surface-calm;
     padding: 8px;
     margin: 8px;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid rgba(0, 190, 190, 0.3);
-    box-shadow: 0 0 6px rgba(0, 190, 190, 0.1);
-}
-
-.widget-volume > box > button {
-    background: transparent;
-    border: none;
-    color: @text-primary;
-}
-
-.widget-volume > box > button:hover {
-    color: @accent-primary;
 }
 
 .widget-volume scale trough {
-    background: @surface-dark;
-    border: 1px solid rgba(0, 190, 190, 0.2);
+    background-color: @surface-dark;
     border-radius: 4px;
 }
 
 .widget-volume scale highlight {
-    background: linear-gradient(90deg, @accent-primary, @accent-secondary);
+    background: @accent-primary;
     border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0, 190, 190, 0.3);
 }
 
-.per-app-volume {
-    background: @surface-dark;
-    padding: 6px 8px;
-    margin: 4px 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 190, 190, 0.2);
-}
-
-/* Backlight widget */
+/* Backlight */
 .widget-backlight {
-    background: linear-gradient(135deg, @surface-calm, @surface-light);
+    background: @surface-calm;
     padding: 8px;
     margin: 8px;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid rgba(0, 190, 190, 0.3);
-    box-shadow: 0 0 6px rgba(0, 190, 190, 0.1);
 }
 
 .widget-backlight scale trough {
-    background: @surface-dark;
-    border: 1px solid rgba(0, 190, 190, 0.2);
+    background-color: @surface-dark;
     border-radius: 4px;
 }
 
 .widget-backlight scale highlight {
-    background: linear-gradient(90deg, @accent-primary, @accent-secondary);
+    background: @accent-primary;
     border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0, 190, 190, 0.3);
-}
-
-/* Inhibitors widget */
-.widget-inhibitors {
-    margin: 8px;
-    font-size: 1.2rem;
-}
-
-.widget-inhibitors > button {
-    font-size: 13px;
-    color: @text-primary;
-    text-shadow: none;
-    background: linear-gradient(135deg, @surface-calm, @surface-light);
-    border: 1px solid rgba(0, 190, 190, 0.3);
-    box-shadow: 0 0 4px rgba(0, 190, 190, 0.1);
-    border-radius: 6px;
-}
-
-.widget-inhibitors > button:hover {
-    background: rgba(0, 190, 190, 0.1);
-    color: @accent-primary;
-}
-
-/* Custom Classes */
-.topbar-buttons > button {
-    border: none;
-    background: transparent;
-    color: @text-primary;
-}
-
-.topbar-buttons > button:hover {
-    background: rgba(0, 190, 190, 0.1);
-    color: @accent-primary;
-    border-radius: 6px;
 }
