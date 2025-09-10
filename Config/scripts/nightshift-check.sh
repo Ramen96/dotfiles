@@ -1,4 +1,6 @@
-#!/bin/bash
-
-# Check wlsunset status for swaync toggle
-[[ $(pgrep -x wlsunset) ]] && echo true || echo false
+#!/bin/sh
+if pgrep -x "wlsunset" >/dev/null; then
+  echo "true"
+else
+  echo "false"
+fi
