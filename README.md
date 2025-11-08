@@ -4,12 +4,12 @@
 
 1. **Pacman**  
    ```sh
-   sudo pacman -S zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard swaync rofi-wayland htop nerd-fonts unzip waybar libsecret qt5-wayland qt6-wayland celluloid gnome-keyring libgnome-keyring vim nwg-look hyprland hyprpaper hypridle hyprlock kvantum nerd-fonts steam gamescope discord libreoffice-still nautilus wlsunset adwaita-icon-theme gnome-themes-extra wofi kitty ghostty acpi imagemagick ghostscript tectonic
+   sudo pacman -S zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard htop nerd-fonts unzip libsecret celluloid vim nerd-fonts steam gamescope discord libreoffice-still ghostty acpi imagemagick ghostscript tectonic power-profiles-daemon noto-fonts gnome-tweaks gnome-shell-extensions extension-manager
    ```  
 
 2. **AUR (yay)**  
    ```sh
-   yay -S visual-studio-code-bin brave-bin rog-control-center sddm-theme-tokyo-night-git
+   yay -S visual-studio-code-bin brave-bin gnome-shell-extension-pop-shell
    ```  
 
 3. **Flatpaks**  
@@ -21,24 +21,12 @@
    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
    ```  
 
-5. **Fonts**  
-Download and install Hack Nerd Font [here](https://www.nerdfonts.com/font-downloads).  
-   ```sh
-   cd ~/Downloads
-   unzip Hack.zip
-   mv ~/Downloads/*.ttf ~/.local/share/fonts/
-   ```  
-   If the parent directory does not exist:  
-   ```sh
-   mkdir -p ~/.local/share/fonts/
-   ```  
-
-6. **Shell**  
+5. **Shell**  
    ```sh
    chsh -s /bin/zsh
    ```  
 
-7. **Zsh Plugins**  
+6. **Zsh Plugins**  
    - [powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#installation)  
    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)  
    - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)  
@@ -85,7 +73,3 @@ rm -rf yay
 ```  
 
 ---
-
-## Kvantum Themes  
-[WhiteSur Kvantum](https://store.kde.org/p/1398841)  
-
