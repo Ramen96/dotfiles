@@ -1,12 +1,9 @@
 # Theme
-#### theme = Horizon
-# theme = IC_Orange_PPL
-theme = Medallion
+theme = light:Everforest Light Med,dark:Everforest Dark Hard
 
 # Font
-font-size = 14
+font-size = 20
 
-# Window
-background-opacity = 0.9
-confirm-close-surface = false
-
+# Window Size
+window-width = 110
+window-height = 25
