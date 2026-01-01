@@ -13,7 +13,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
@@ -24,7 +23,6 @@ require("lazy").setup({
         colorscheme = "kanagawa",
       },
     },
-
     -- 1. LANGUAGES
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.rust" },
@@ -33,7 +31,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.angular" },
     { import = "lazyvim.plugins.extras.lang.docker" },
-
     -- 2. Themes
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { "rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000 },
@@ -49,12 +46,16 @@ require("lazy").setup({
     { "mcchrish/zenbones.nvim", name = "zenbones", dependencies = { "rktjmp/lush.nvim" }, priority = 1000 },
     { "thesimonho/kanagawa-paper.nvim", name = "kanagawa-paper", priority = 1000 },
     { "webhooked/kanso.nvim", name = "kanso", priority = 1000 },
-
     -- 3. EDITOR TOOLS
     -- { import = "lazyvim.plugins.extras.linting.cspell" },
     { import = "lazyvim.plugins.extras.editor.aerial" },
     { import = "lazyvim.plugins.extras.editor.outline" },
-
+    -- 4. AUTO TAG
+    {
+      "windwp/nvim-ts-autotag",
+      event = { "BufReadPre", "BufNewFile" },
+      opts = {},
+    },
     -- import/override with your plugins
     { import = "plugins" },
   },
