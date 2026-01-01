@@ -21,7 +21,7 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        colorscheme = "everforest",
+        colorscheme = "kanagawa",
       },
     },
 
@@ -47,6 +47,8 @@ require("lazy").setup({
     { "olimorris/onedarkpro.nvim", name = "onedark", priority = 1000 },
     { "savq/melange-nvim", name = "melange", priority = 1000 },
     { "mcchrish/zenbones.nvim", name = "zenbones", dependencies = { "rktjmp/lush.nvim" }, priority = 1000 },
+    { "thesimonho/kanagawa-paper.nvim", name = "kanagawa-paper", priority = 1000 },
+    { "webhooked/kanso.nvim", name = "kanso", priority = 1000 },
 
     -- 3. EDITOR TOOLS
     -- { import = "lazyvim.plugins.extras.linting.cspell" },
