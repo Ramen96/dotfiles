@@ -23,8 +23,8 @@ return {
     "saghen/blink.cmp",
     opts = {
       completion = {
-        ghost_text = { enabled = true }, -- Shows gray text like Copilot/Intellicode
-        documentation = { auto_show = true }, -- Shows the doc popup automatically
+        ghost_text = { enabled = false }, -- Shows gray text like Copilot/Intellicode
+        documentation = { auto_show = false }, -- Shows the doc popup automatically
       },
     },
   },
