@@ -4,12 +4,12 @@
 
 1. **Pacman**  
    ```sh
-   sudo pacman -S --needed hyprpaper hyprpicker hyprlauncher hypridle hyprlock xdg-desktop-portal-hyprland hyprsysteminfo hyprsunset hyprpolkitagent hyprqt6engine hyprshutdown hyprpwcenter hyprtoolkit hyprcursor hyprutils hyprlang hyprwayland-scanner aquamarine hyprgraphics hyprland-guiutils zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard htop unzip libsecret celluloid vim nerd-fonts steam gamescope discord libreoffice-still ghostty acpi imagemagick ghostscript tectonic power-profiles-daemon noto-fonts flatpak
+   sudo pacman -S --needed hyprpaper hyprpicker hyprlauncher hypridle hyprlock xdg-desktop-portal-hyprland hyprsunset hyprpolkitagent hyprpwcenter hyprtoolkit hyprcursor hyprutils hyprlang hyprwayland-scanner aquamarine hyprgraphics hyprland-guiutils zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard htop unzip libsecret celluloid vim nerd-fonts steam gamescope discord libreoffice-still ghostty acpi imagemagick ghostscript tectonic power-profiles-daemon noto-fonts flatpak
    ```  
 
 2. **AUR (yay)**  
    ```sh
-   yay -S brave-bin adwaita-qt5 adwaita-qt6 bibata-cursor-theme protonup-qt python-inputs python-steam
+   yay -S --needed brave-bin adwaita-qt5 adwaita-qt6 bibata-cursor-theme protonup-qt python-inputs python-steam hyprsysteminfo hyprshutdown hyprqt6engine
    ```  
 
 3. **Flatpaks**  
