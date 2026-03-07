@@ -73,3 +73,10 @@ rm -rf yay
 ```  
 
 ---
+
+## 5) Copy dotfiles
+```sh
+git clone https://github.com/Ramen96/dotfiles.git
+cd dotfiles/Config/
+cp -rv ./* ~/.config/
+```
