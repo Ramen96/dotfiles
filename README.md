@@ -4,7 +4,7 @@
 
 1. **Pacman**  
    ```sh
-   sudo pacman -S zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard htop nerd-fonts unzip libsecret celluloid vim nerd-fonts steam gamescope discord libreoffice-still ghostty acpi imagemagick ghostscript tectonic power-profiles-daemon noto-fonts gnome-tweaks gnome-shell-extensions extension-manager
+   sudo pacman -S hyprpaper hyprpicker hyprlauncher hypridle hyprlock xdg-desktop-portal-hyprland hyprsysteminfo hyprsunset hyprpolkitagent hyprqt6engine hyprpwcenter hyprshutdown hyprtoolkit hyprcursor hyprutils hyprlang hyprwayland-scanner aquamarine hyprgraphics hyprland-guiutils zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard htop unzip libsecret celluloid vim nerd-fonts steam gamescope discord libreoffice-still ghostty acpi imagemagick ghostscript tectonic power-profiles-daemon noto-fonts
    ```  
 
 2. **AUR (yay)**  
