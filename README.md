@@ -4,7 +4,7 @@
 
 1. **Pacman**  
    ```sh
-   sudo pacman -S --needed hyprpaper hyprpicker hyprlauncher hypridle hyprlock xdg-desktop-portal-hyprland hyprsunset hyprpolkitagent hyprpwcenter hyprtoolkit hyprcursor hyprutils hyprlang hyprwayland-scanner aquamarine hyprgraphics hyprland-guiutils zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard htop unzip libsecret celluloid vim nerd-fonts steam gamescope discord libreoffice-still ghostty acpi imagemagick ghostscript tectonic power-profiles-daemon noto-fonts flatpak
+   sudo pacman -S --needed hyprpaper hyprpicker hyprlauncher hypridle hyprlock xdg-desktop-portal-hyprland hyprsunset hyprpolkitagent hyprpwcenter hyprtoolkit hyprcursor hyprutils hyprlang hyprwayland-scanner aquamarine hyprgraphics hyprland-guiutils zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard htop unzip libsecret celluloid vim nerd-fonts steam gamescope discord libreoffice-still ghostty acpi imagemagick ghostscript tectonic power-profiles-daemon noto-fonts flatpak nwg-look
    ```  
 
 2. **AUR (yay)**  
