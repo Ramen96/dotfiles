@@ -9,7 +9,7 @@
 
 2. **AUR (yay)**  
    ```sh
-   yay -S visual-studio-code-bin brave-bin gnome-shell-extension-pop-shell
+   yay -S brave-bin adwaita-qt5 adwaita-qt6 bibata-cursor-theme protonup-qt python-inputs python-steam
    ```  
 
 3. **Flatpaks**  
