@@ -1,21 +1,8 @@
-# Directories
-/google-chrome
-/htop
-/Code
-/htop
-/systemd
-/pulse
-/session
-/WebCord
-/yay
-/cef_user_data
-/ibus
-/libfm
-/dconf
-/xsettingsd
-/Electron
-/discord
-
-# Files
-trashrc
-mimeapps.list
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
