@@ -1,5 +1,5 @@
 # Theme
-theme = Everforest Dark Hard
+theme = light:Catppuccin Latte, dark:Everforest Dark Hard
 
 # Font
 font-size = 15
