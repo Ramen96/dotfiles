@@ -27,7 +27,7 @@ dim() { echo -e "${DIM}      $*${RESET}"; }
 
 section() {
   echo -e "\n${BOLD}${CYAN}━━━  $*${RESET}"
-  echo -e "${DIM}     ────────────────────────────────────────────${RESET}\n"
+  echo -e "${DIM}      ────────────────────────────────────────────${RESET}\n"
 }
 
 confirm() {
@@ -50,12 +50,12 @@ fi
 # ── Banner ────────────────────────────────────────────────────────────────────
 echo -e "
 ${CYAN}${BOLD}
-   ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
-   ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
-   ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
-   ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║
-   ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
-   ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
+   ██████╗  ██████╗ ████████╗███████╗██╗██╗      ███████╗███████╗
+   ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║      ██╔════╝██╔════╝
+   ██║  ██║██║   ██║   ██║   █████╗  ██║██║      █████╗  ███████╗
+   ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║      ██╔══╝  ╚════██║
+   ██████╔╝╚██████╔╝   ██║   ██║      ██║███████╗███████╗███████║
+   ╚═════╝  ╚═════╝    ╚═╝   ╚═╝      ╚═╝╚══════╝╚══════╝╚══════╝
 ${RESET}
    ${DIM}Arch Linux + Hyprland — by Ramen96${RESET}
    ${DIM}https://github.com/Ramen96/dotfiles${RESET}
@@ -179,7 +179,6 @@ if [[ -d "$HOME/.oh-my-zsh" ]]; then
   warn "Oh-My-Zsh already installed — skipping"
 else
   info "Installing Oh-My-Zsh..."
-  # RUNZSH=no + CHSH=no prevents it from hijacking this script mid-run
   RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   success "Oh-My-Zsh installed"
 fi
@@ -249,7 +248,8 @@ success "pynvim installed"
 # ─────────────────────────────────────────────────────────────────────────────
 section "11 · Back Up & Copy Dotfiles"
 # ─────────────────────────────────────────────────────────────────────────────
-DOTFILES_DIR="$HOME/dotfiles"
+# Get the absolute path of the directory where this script is located
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKUP_DIR="$HOME/.config.bak.$(date +%Y%m%d_%H%M%S)"
 
 # Back up existing ~/.config if it exists and has contents
@@ -261,26 +261,28 @@ else
   dim "No existing ~/.config to back up"
 fi
 
-# Clone or pull the dotfiles repo
-if [[ ! -d "$DOTFILES_DIR" ]]; then
-  info "Cloning dotfiles repo..."
-  git clone https://github.com/Ramen96/dotfiles.git "$DOTFILES_DIR"
-else
-  warn "Dotfiles repo already found at $DOTFILES_DIR"
-  info "Pulling latest changes..."
-  git -C "$DOTFILES_DIR" pull
-fi
-
-info "Copying configs to ~/.config/..."
+info "Copying configs from $DOTFILES_DIR to ~/.config/..."
 mkdir -p "$HOME/.config"
-cp -rv "$DOTFILES_DIR/Config/"* "$HOME/.config/"
+
+# Copy everything from current directory EXCEPT the script itself and the .git folder
+# Using find to filter out current script and hidden git metadata
+find "$DOTFILES_DIR" -maxdepth 1 ! -path "$DOTFILES_DIR" ! -name ".git" ! -name "$(basename "$0")" -exec cp -rv {} "$HOME/.config/" \;
+
 success "Dotfiles copied to ~/.config"
 
 # ─────────────────────────────────────────────────────────────────────────────
 section "12 · Neovim Setup"
 # ─────────────────────────────────────────────────────────────────────────────
-info "Running Neovim setup script..."
-curl -fsSL https://raw.githubusercontent.com/Ramen96/dotfiles/main/Config/nvim-setup/install.sh | bash
+# Since nvim config is now directly in ~/.config/nvim, we check if the setup script exists locally first
+NVIM_SETUP_LOCAL="$DOTFILES_DIR/nvim/nvim-setup/install.sh"
+
+if [[ -f "$NVIM_SETUP_LOCAL" ]]; then
+  info "Running Neovim setup script from local path..."
+  bash "$NVIM_SETUP_LOCAL"
+else
+  info "Running Neovim setup script from remote..."
+  curl -fsSL https://raw.githubusercontent.com/Ramen96/dotfiles/main/nvim/nvim-setup/install.sh | bash
+fi
 success "Neovim setup complete"
 
 # ── Done ──────────────────────────────────────────────────────────────────────
