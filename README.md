@@ -23,11 +23,35 @@
 
 ## 📋 Table of Contents
 
-- [📦 Packages](#-packages)
-- [🎨 Pacman Customization](#-pacman-customization)
-- [🛠️ Dev Environment](#️-dev-environment)
-- [🔧 Install yay](#-install-yay)
-- [📁 Copy Dotfiles](#-copy-dotfiles)
+- [⚡ Auto Install](#-auto-install)
+- [🔨 Manual Install](#-manual-install)
+  - [📦 Packages](#-packages)
+  - [🎨 Pacman Customization](#-pacman-customization)
+  - [🛠️ Dev Environment](#️-dev-environment)
+  - [🔧 Install yay](#-install-yay)
+  - [📁 Copy Dotfiles](#-copy-dotfiles)
+
+---
+
+## ⚡ Auto Install
+
+> [!WARNING]
+> The auto installer will modify your system, install packages, and overwrite existing configs in `~/.config`. Review the [install.sh](install.sh) script before running it.
+
+One command to set everything up — packages, AUR, Flatpaks, Oh-My-Zsh, plugins, dotfiles, and Neovim:
+
+```sh
+bash <(curl -fsSL https://raw.githubusercontent.com/Ramen96/dotfiles/main/install.sh)
+```
+
+> [!NOTE]
+> Node.js must be installed manually from [nodejs.org](https://nodejs.org/) before running the installer if you want the npm globals (`neovim`, `mermaid-cli`) set up automatically. The script will skip that step and remind you if Node isn't found.
+
+---
+
+## 🔨 Manual Install
+
+Prefer to do things yourself? Follow the steps below in order.
 
 ---
 
