@@ -72,7 +72,7 @@ dim "7.  Install Oh-My-Zsh + plugins"
 dim "8.  Set Zsh as default shell"
 dim "9.  Install Node.js global packages"
 dim "10. Install Python packages"
-dim "11. Copy dotfiles to ~/.config"
+dim "11. Back up existing ~/.config and copy dotfiles"
 dim "12. Run the Neovim setup script"
 echo ""
 
@@ -231,10 +231,12 @@ if ! command -v node &>/dev/null; then
   warn "Node.js not found — skipping npm globals."
   warn "Install Node.js from https://nodejs.org/ then run:"
   dim "  npm install -g neovim @mermaid-js/mermaid-cli"
+  NODE_MISSING=true
 else
   info "Installing global npm packages..."
   npm install -g neovim @mermaid-js/mermaid-cli
   success "npm globals installed"
+  NODE_MISSING=false
 fi
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -245,10 +247,21 @@ pip install pynvim --break-system-packages
 success "pynvim installed"
 
 # ─────────────────────────────────────────────────────────────────────────────
-section "11 · Copy Dotfiles"
+section "11 · Back Up & Copy Dotfiles"
 # ─────────────────────────────────────────────────────────────────────────────
 DOTFILES_DIR="$HOME/dotfiles"
+BACKUP_DIR="$HOME/.config.bak.$(date +%Y%m%d_%H%M%S)"
 
+# Back up existing ~/.config if it exists and has contents
+if [[ -d "$HOME/.config" ]] && [[ -n "$(ls -A "$HOME/.config" 2>/dev/null)" ]]; then
+  info "Backing up existing ~/.config to $BACKUP_DIR ..."
+  cp -r "$HOME/.config" "$BACKUP_DIR"
+  success "Backup saved to $BACKUP_DIR"
+else
+  dim "No existing ~/.config to back up"
+fi
+
+# Clone or pull the dotfiles repo
 if [[ ! -d "$DOTFILES_DIR" ]]; then
   info "Cloning dotfiles repo..."
   git clone https://github.com/Ramen96/dotfiles.git "$DOTFILES_DIR"
@@ -281,8 +294,12 @@ ${YELLOW}${BOLD}  Next steps:${RESET}
 "
 dim "› Log out and back in for the Zsh shell change to take effect"
 dim "› Run 'p10k configure' on first Zsh launch to set up your prompt"
-if ! command -v node &>/dev/null; then
-  dim "› Install Node.js from https://nodejs.org/ then run:"
-  dim "    npm install -g neovim @mermaid-js/mermaid-cli"
+if [[ "${NODE_MISSING:-false}" == "true" ]]; then
+  warn "Node.js was not found during install. Once installed, run:"
+  dim "  npm install -g neovim @mermaid-js/mermaid-cli"
+fi
+if [[ -d "$BACKUP_DIR" ]]; then
+  dim "› Your old ~/.config was backed up to: $BACKUP_DIR"
+  dim "  You can delete it once you're happy: rm -rf $BACKUP_DIR"
 fi
 echo ""
