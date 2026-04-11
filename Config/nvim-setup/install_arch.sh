@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # =============================================================================
 #  LazyVim Dependency Installer — Arch Linux (x86_64)
+#
+#  Flags:
+#    --dry-run        Print what would be done without executing
+#    --skip-docker    Skip Docker installation
+#    --skip-lsp       Skip LSP & formatter installation
 # =============================================================================
 
 set -euo pipefail
@@ -12,6 +17,20 @@ CYAN='\033[0;36m'
 BOLD='\033[1m'
 RESET='\033[0m'
 
+# ── Flag parsing ──────────────────────────────────────────────────────────────
+DRY_RUN="${DRY_RUN:-false}"
+SKIP_DOCKER="${SKIP_DOCKER:-false}"
+SKIP_LSP="${SKIP_LSP:-false}"
+
+for arg in "$@"; do
+  case "$arg" in
+  --dry-run) DRY_RUN=true ;;
+  --skip-docker) SKIP_DOCKER=true ;;
+  --skip-lsp) SKIP_LSP=true ;;
+  esac
+done
+
+# ── Helpers ───────────────────────────────────────────────────────────────────
 info() { echo -e "  ${CYAN}›${RESET}  $*"; }
 success() { echo -e "  ${GREEN}✔${RESET}  $*"; }
 warn() { echo -e "  ${YELLOW}⚠${RESET}  $*"; }
@@ -21,32 +40,105 @@ error() {
 }
 section() { echo -e "\n  ${BOLD}── $* ──${RESET}\n"; }
 
+pacman_install() {
+  local pkg="$1"
+  if pacman -Qi "$pkg" &>/dev/null; then
+    success "$pkg already installed — skipping."
+    return
+  fi
+  if [[ "$DRY_RUN" == true ]]; then
+    warn "[DRY RUN] Would run: sudo pacman -S --needed --noconfirm $pkg"
+    return
+  fi
+  info "Installing $pkg..."
+  if sudo pacman -S --needed --noconfirm "$pkg"; then
+    pacman -Qi "$pkg" &>/dev/null &&
+      success "$pkg installed successfully." ||
+      error "$pkg install reported success but package not found."
+  else
+    error "Failed to install $pkg via pacman."
+  fi
+}
+
+aur_install() {
+  local pkg="$1"
+  if pacman -Qi "$pkg" &>/dev/null; then
+    success "$pkg already installed — skipping."
+    return
+  fi
+  if [[ "$DRY_RUN" == true ]]; then
+    warn "[DRY RUN] Would run: $AUR_HELPER -S --needed --noconfirm $pkg"
+    return
+  fi
+  info "Installing $pkg from AUR via $AUR_HELPER..."
+  if $AUR_HELPER -S --needed --noconfirm "$pkg"; then
+    pacman -Qi "$pkg" &>/dev/null &&
+      success "$pkg installed successfully." ||
+      error "$pkg install reported success but package not found."
+  else
+    error "Failed to install $pkg from AUR."
+  fi
+}
+
 # ── Preflight ─────────────────────────────────────────────────────────────────
 section "Preflight Checks"
 
-if ! command -v pacman &>/dev/null; then
-  error "pacman not found. This script requires Arch Linux."
+command -v pacman &>/dev/null || error "pacman not found — this script requires Arch Linux."
+
+if [[ "$DRY_RUN" == false ]]; then
+  info "Syncing package databases..."
+  sudo pacman -Sy --noconfirm
+  success "Package databases synced."
 fi
 
-info "Syncing package databases..."
-sudo pacman -Sy --noconfirm
-success "Package databases synced."
+# ── AUR Helper ────────────────────────────────────────────────────────────────
+section "AUR Helper"
+
+# Detect existing AUR helper, or install yay
+AUR_HELPER=""
+for helper in yay paru; do
+  if command -v "$helper" &>/dev/null; then
+    AUR_HELPER="$helper"
+    success "Found AUR helper: $AUR_HELPER"
+    break
+  fi
+done
+
+if [[ -z "$AUR_HELPER" ]]; then
+  if [[ "$DRY_RUN" == true ]]; then
+    warn "[DRY RUN] No AUR helper found — would install yay."
+    AUR_HELPER="yay"
+  else
+    info "No AUR helper found — installing yay..."
+    pacman_install git
+    pacman_install base-devel
+    # Fix: use a plain variable (not local) since this is top-level scope
+    tmp_dir=$(mktemp -d)
+    git clone https://aur.archlinux.org/yay.git "$tmp_dir/yay"
+    cd "$tmp_dir/yay"
+    makepkg -si --noconfirm
+    cd -
+    rm -rf "$tmp_dir"
+    command -v yay &>/dev/null &&
+      success "yay installed successfully." ||
+      error "yay installation failed."
+    AUR_HELPER="yay"
+  fi
+fi
 
 # ── Core Tools ────────────────────────────────────────────────────────────────
 section "Core Tools & Build Essentials"
 
-CORE_PKGS=(git lazygit fd ripgrep cmake base-devel)
-info "Installing core packages: ${CORE_PKGS[*]}"
-sudo pacman -S --needed --noconfirm "${CORE_PKGS[@]}"
-success "Core tools installed."
+for pkg in git lazygit fd ripgrep cmake base-devel; do
+  pacman_install "$pkg"
+done
 
 # ── Language Runtimes ─────────────────────────────────────────────────────────
 section "Language Runtimes & Compilers"
 
-LANG_PKGS=(clang lldb rustup go)
-info "Installing language runtimes: ${LANG_PKGS[*]}"
-sudo pacman -S --needed --noconfirm "${LANG_PKGS[@]}"
-success "Language runtimes installed."
+for pkg in clang lldb rustup go; do
+  pacman_install "$pkg"
+done
 
 # ── Node.js ───────────────────────────────────────────────────────────────────
 section "Node.js"
@@ -54,66 +146,65 @@ section "Node.js"
 if command -v node &>/dev/null; then
   success "Node.js already installed: $(node --version)"
 else
-  warn "Node.js is NOT installed."
-  warn "Please install it from: https://nodejs.org/"
-  warn "Your Tailwind and Angular extras depend on Node & NPM being in PATH."
+  if [[ "$DRY_RUN" == true ]]; then
+    warn "[DRY RUN] Would install nvm and Node.js LTS"
+  else
+    info "Installing nvm..."
+    NVM_DIR="$HOME/.nvm"
+    curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/HEAD/install.sh | bash
+    # Source nvm immediately so we can use it in this session
+    [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+    info "Installing Node.js LTS via nvm..."
+    nvm install --lts
+    nvm use --lts
+    command -v node &>/dev/null &&
+      success "Node.js installed: $(node --version)" ||
+      warn "node not found in PATH — open a new terminal and run: nvm install --lts"
+  fi
 fi
 
 # ── Docker ────────────────────────────────────────────────────────────────────
 section "Docker"
 
-DOCKER_PKGS=(docker docker-compose)
-info "Installing Docker packages: ${DOCKER_PKGS[*]}"
-sudo pacman -S --needed --noconfirm "${DOCKER_PKGS[@]}"
-success "Docker installed."
+if [[ "$SKIP_DOCKER" == true ]]; then
+  warn "Skipping Docker (--skip-docker)."
+else
+  for pkg in docker docker-compose; do
+    pacman_install "$pkg"
+  done
 
-# Enable and start Docker service
-info "Enabling Docker service..."
-sudo systemctl enable --now docker
-success "Docker service enabled and started."
+  if [[ "$DRY_RUN" == false ]]; then
+    info "Enabling Docker service..."
+    sudo systemctl enable --now docker
+    success "Docker service enabled."
 
-# Add current user to docker group so Neovim can access the socket without sudo
-info "Adding ${USER} to the docker group..."
-sudo usermod -aG docker "$USER"
-success "User added to docker group. (Log out and back in to apply.)"
+    info "Adding $USER to docker group..."
+    sudo usermod -aG docker "$USER"
+    success "Added to docker group. Log out and back in to apply."
+  else
+    warn "[DRY RUN] Would enable Docker service and add $USER to docker group."
+  fi
+fi
 
 # ── LSPs & Formatters ─────────────────────────────────────────────────────────
 section "LSPs & Formatters"
 
-LSP_PKGS=(pyright ruff stylua shellcheck shfmt)
-info "Installing LSPs and formatters: ${LSP_PKGS[*]}"
-sudo pacman -S --needed --noconfirm "${LSP_PKGS[@]}"
-success "LSPs and formatters installed."
-
-# ── Post-Install ──────────────────────────────────────────────────────────────
-section "Post-Install Configuration"
-
-# Rust: initialize stable toolchain
-if command -v rustup &>/dev/null; then
-  info "Initialising Rust stable toolchain..."
-  rustup default stable
-  success "Rust stable toolchain set."
+if [[ "$SKIP_LSP" == true ]]; then
+  warn "Skipping LSPs & formatters (--skip-lsp)."
 else
-  warn "rustup not found — skipping Rust toolchain init."
+  # These are in official repos
+  for pkg in shellcheck shfmt; do
+    pacman_install "$pkg"
+  done
+
+  # stylua, pyright, and ruff via AUR
+  for pkg in stylua pyright ruff; do
+    aur_install "$pkg"
+  done
 fi
 
-# Tree-sitter CLI
-if command -v npm &>/dev/null; then
-  info "Installing tree-sitter-cli via npm..."
-  npm install -g tree-sitter-cli
-  success "tree-sitter-cli installed."
-else
-  warn "npm not available — install Node.js first, then run:"
-  warn "  npm install -g tree-sitter-cli"
-fi
-
-# ── Summary ───────────────────────────────────────────────────────────────────
+# ── Done ──────────────────────────────────────────────────────────────────────
 section "Done"
 
-echo -e "  ${GREEN}${BOLD}Arch Linux setup complete!${RESET}\n"
-echo -e "  Remaining manual steps:"
-echo -e "  ${YELLOW}1.${RESET} Install Node.js from https://nodejs.org/ (if not already done)"
-echo -e "  ${YELLOW}2.${RESET} After installing Node, run: npm install -g tree-sitter-cli"
-echo -e "  ${YELLOW}3.${RESET} Log out and back in (or run 'newgrp docker') for Docker group to take effect."
-echo -e "  ${YELLOW}4.${RESET} Open a new terminal so all PATH changes take effect."
-echo
+echo -e "  ${GREEN}${BOLD}Arch Linux install complete!${RESET}"
+echo -e "  Post-install steps will run next via post_install.sh\n"
