@@ -66,12 +66,15 @@ return {
   -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
+    --@class PluginLspOpts
     opts = {
-      ---@type lspconfig.options
+      --@type LazyKeySpec[]|table<string, any>
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {},
+        clangd = {
+          mason = false,
+        },
       },
     },
   },
