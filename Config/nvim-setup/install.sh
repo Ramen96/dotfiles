@@ -3,10 +3,9 @@
 #  LazyVim Dependency Installer — Master Script
 #  Detects OS/arch and delegates to the appropriate install script.
 # =============================================================================
-
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASE_URL="https://raw.githubusercontent.com/Ramen96/dotfiles/main/Config/nvim-setup"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -37,7 +36,6 @@ error() {
 
 detect_os() {
   local os arch
-
   case "$(uname -s)" in
   Darwin)
     arch="$(uname -m)"
@@ -55,7 +53,7 @@ detect_os() {
       case "$ID" in
       arch) echo "arch" ;;
       ubuntu | debian) echo "ubuntu" ;;
-      raspbian) echo "ubuntu" ;; # Raspberry Pi OS ≈ Debian
+      raspbian) echo "ubuntu" ;;
       *)
         warn "Unrecognised Linux distro: $ID. Attempting Ubuntu script as fallback."
         echo "ubuntu"
@@ -73,15 +71,8 @@ detect_os() {
 
 run_installer() {
   local target="$1"
-  local script="${SCRIPT_DIR}/install_${target}.sh"
-
-  if [[ ! -f "$script" ]]; then
-    error "Installer script not found: $script"
-  fi
-
-  chmod +x "$script"
-  info "Launching ${BOLD}${script}${RESET}...\n"
-  bash "$script"
+  info "Fetching install_${target}.sh from GitHub...\n"
+  curl -fsSL "${BASE_URL}/install_${target}.sh" | bash
 }
 
 # ── Main ──────────────────────────────────────────────────────────────────────
