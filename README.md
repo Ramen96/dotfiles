@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/header.png" alt="Hyprland" width="600" style="border-radius: 12px;" />
+<img src="https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/header.svg" alt="Hyprland" width="600" style="border-radius: 12px;" />
 
 # 🏔️ Dotfiles
 
