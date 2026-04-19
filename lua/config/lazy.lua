@@ -13,17 +13,26 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
+
 require("lazy").setup({
   spec = {
-    -- add LazyVim and import its plugins
+    -- 1. LazyVim Core
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        colorscheme = "kanagawa",
+        -- Set to nil or remove to let background detection work
+        colorscheme = function()
+          if vim.o.background == "light" then
+            vim.cmd("colorscheme onelight")
+          else
+            vim.cmd("colorscheme onedark_dark")
+          end
+        end,
       },
     },
-    -- 1. LANGUAGES
+
+    -- 2. LANGUAGES
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
@@ -32,52 +41,50 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.angular" },
     { import = "lazyvim.plugins.extras.lang.docker" },
-    -- 2. Themes
+
+    -- 3. THEMES
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     { "rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000 },
     { "folke/tokyonight.nvim", name = "tokyonight", priority = 1000 },
     { "rose-pine/neovim", name = "rose-pine", priority = 1000 },
     { "sainnhe/gruvbox-material", name = "gruvbox-material", priority = 1000 },
-    { "EdenEast/nightfox.nvim", name = "nightfox", priority = 1000 },
-    { "shaunsingh/nord.nvim", name = "nord", priority = 1000 },
     { "Shatur/neovim-ayu", name = "ayu", priority = 1000 },
-    { "sainnhe/everforest", name = "everforest", priority = 1000 },
-    { "olimorris/onedarkpro.nvim", name = "onedark", priority = 1000 },
-    { "savq/melange-nvim", name = "melange", priority = 1000 },
-    { "mcchrish/zenbones.nvim", name = "zenbones", dependencies = { "rktjmp/lush.nvim" }, priority = 1000 },
-    { "thesimonho/kanagawa-paper.nvim", name = "kanagawa-paper", priority = 1000 },
-    { "webhooked/kanso.nvim", name = "kanso", priority = 1000 },
-    -- 3. EDITOR TOOLS
-    -- { import = "lazyvim.plugins.extras.linting.cspell" },
+
+    -- ONEDARK PRO CONFIG
+    {
+      "olimorris/onedarkpro.nvim",
+      name = "onedark",
+      priority = 1000,
+      config = function()
+        require("onedarkpro").setup({
+          dark_theme = "onedark_dark",
+          light_theme = "onelight",
+          options = {
+            transparency = false,
+            cursorline = true,
+          },
+        })
+      end,
+    },
+
+    -- 4. EDITOR TOOLS
     { import = "lazyvim.plugins.extras.editor.aerial" },
     { import = "lazyvim.plugins.extras.editor.outline" },
-    -- 4. AUTO TAG
+
+    -- 5. AUTO TAG
     {
       "windwp/nvim-ts-autotag",
       event = { "BufReadPre", "BufNewFile" },
       opts = {},
     },
-    -- import/override with your plugins
+
     { import = "plugins" },
   },
-  defaults = {
-    lazy = false,
-    version = false,
-  },
-  install = { colorscheme = { "tokyonight", "habamax" } },
-  checker = {
-    enabled = true,
-    notify = false,
-  },
+  install = { colorscheme = { "onedark_dark", "onelight" } },
+  checker = { enabled = true, notify = false },
   performance = {
     rtp = {
-      disabled_plugins = {
-        "gzip",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
+      disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
     },
   },
 })
