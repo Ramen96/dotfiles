@@ -94,7 +94,7 @@ section "2 · Pacman Packages"
 info "Installing pacman packages..."
 sudo pacman -S --needed --noconfirm \
   hyprpaper hyprpicker hyprlauncher hypridle hyprlock \
-  xdg-desktop-portal-hyprland hyprsunset hyprpolkitagent hyprpwcenter hyprtoolkit \
+  xdg-desktop-portal-hyprland xdg-desktop-portal-gtk hyprsunset hyprpolkitagent hyprpwcenter hyprtoolkit \
   hyprcursor hyprutils hyprlang hyprwayland-scanner aquamarine hyprgraphics \
   hyprland-guiutils zsh fastfetch dosfstools dysk man-db man-pages wl-clipboard \
   htop unzip libsecret celluloid vim nerd-fonts steam gamescope discord \
