@@ -2,72 +2,45 @@
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-  "layer": "overlay",
-  "control-center-layer": "top",
-  "layer-shell": true,
-  "cssPriority": "application",
-  "control-center-margin-top": 0,
-  "control-center-margin-bottom": 0,
-  "control-center-margin-right": 0,
-  "control-center-margin-left": 0,
-  "notification-2fa-action": true,
-  "notification-inline-replies": false,
-  "notification-icon-size": 64,
-  "notification-body-image-height": 100,
-  "notification-body-image-width": 200,
-  "timeout": 10,
-  "timeout-low": 5,
-  "timeout-critical": 0,
+  "control-center-width": 450,
   "fit-to-screen": true,
-  "relative-timestamps": true,
-  "control-center-width": 500,
-  "control-center-height": 600,
-  "notification-window-width": 500,
-  "keyboard-shortcuts": true,
-  "image-visibility": "when-available",
-  "transition-time": 200,
-  "hide-on-clear": false,
-  "hide-on-action": true,
-  "text-empty": "No Notifications",
-  "script-fail-notify": true,
+  "control-center-margin-top": 12,
+  "control-center-margin-right": 12,
+  "control-center-margin-left": 12,
+  "notification-window-width": 450,
   "widgets": [
-    "dnd",
     "mpris",
+    "dnd",
     "buttons-grid",
-    "backlight",
     "volume",
-    "title",
     "notifications"
   ],
   "widget-config": {
-    "title": {
-      "text": "Notifications",
-      "clear-all-button": true,
-      "button-text": "Clear All"
-    },
     "dnd": {
       "text": "Do Not Disturb"
     },
     "mpris": {
-      "image-size": 96,
-      "image-radius": 8,
-      "blacklist": []
+      "image-size": 60,
+      "image-radius": 8
+    },
+    "notifications": {
+      "text": "Notifications"
+    },
+    "volume": {
+      "label": "󰕾"
     },
     "buttons-grid": {
       "actions": [
         {
           "label": "󰤨",
           "type": "toggle",
-          "active": true,
-          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
-          "update-command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
+          "command": "nmcli radio wifi on",
+          "update-command": "~/.config/scripts/wifi-check.sh"
         },
         {
           "label": "󰂯",
           "type": "toggle",
-          "active": true,
-          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power on || bluetoothctl power off'",
-          "update-command": "sh -c '[[ $(bluetoothctl show | grep \"Powered: yes\") ]] && echo true || echo false'"
+          "command": "~/.config/scripts/bt-check.sh"
         },
         {
           "label": "󰖔",
@@ -82,24 +55,11 @@
           "command": "hyprlock"
         },
         {
-          "label": "󰜉",
-          "type": "action",
-          "command": "systemctl reboot"
-        },
-        {
           "label": "󰐥",
           "type": "action",
           "command": "systemctl poweroff"
         }
       ]
-    },
-    "volume": {
-      "label": "󰕾",
-      "step": 5
-    },
-    "backlight": {
-      "label": "󰃟",
-      "step": 5
     }
   }
 }
