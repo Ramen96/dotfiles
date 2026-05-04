@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 if pgrep -x "wlsunset" >/dev/null; then
-  echo "true"
+  printf "true"
 else
-  echo "false"
+  printf "false"
 fi

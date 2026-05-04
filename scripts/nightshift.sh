@@ -1,9 +1,8 @@
 #!/bin/bash
 
-if pgrep -x wlsunset >/dev/null; then
-  # wlsunset is running → kill it
+if pgrep -x "wlsunset" >/dev/null; then
   pkill -x wlsunset
 else
-  # wlsunset is not running → start it
-  wlsunset -t 3000 -T 3400 &
+  # setsid runs the program in a new session so it survives the script exit
+  setsid wlsunset -t 3700 -T 4100 >/dev/null 2>&1 &
 fi
