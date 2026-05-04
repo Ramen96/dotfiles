@@ -1,210 +1,63 @@
-/*
- * REFINED CYBERPUNK WAYBAR - Clean Neo-Tokyo Edition
- * Toned-down cyberpunk styling with grouped modules
- */
+@define-color bg-solid #11111b;
+@define-color border-main #313244;
+@define-color accent #00e6b8;
+@define-color text-main #e0e0e0;
+@define-color text-dim #6c7086;
 
-/* Define Refined Cyberpunk Color Palette */
-@define-color bg-matrix rgb(0, 8, 16);
-@define-color surface-cyber rgb(12, 20, 32);
-@define-color surface-dark rgb(8, 15, 25);
-@define-color surface-light rgb(18, 28, 42);
-
-/* Primary accent - cyan for main elements */
-@define-color accent-primary rgb(0, 255, 255);
-@define-color accent-primary-dim rgb(0, 200, 200);
-
-/* Secondary accent - subtle magenta for highlights */
-@define-color accent-secondary rgb(200, 100, 255);
-@define-color accent-secondary-dim rgb(150, 80, 200);
-
-/* Status colors */
-@define-color status-good rgb(0, 255, 127);
-@define-color status-warning rgb(255, 180, 0);
-@define-color status-critical rgb(255, 80, 100);
-
-/* Text Colors */
-@define-color text-primary rgb(200, 240, 255);
-@define-color text-secondary rgb(150, 200, 220);
-@define-color text-dim rgb(120, 150, 170);
-
-/* Base Font Configuration */
 * {
-    font-family: "JetBrains Mono Nerd Font", "Fira Code Nerd Font", "Source Code Pro", "DejaVu Sans Mono", monospace;
-    font-weight: 500;
-    font-size: 13px;
-    border: none;
-    border-radius: 0;
-    min-height: 0;
+  font-family: "Inter", "JetBrains Mono Nerd Font", sans-serif;
+  font-size: 11px;
+  border: none;
+  min-height: 0;
 }
 
-/* Main Window */
 window#waybar {
-    background: rgba(0, 0, 0, 0);
+  background: transparent;
 }
 
-/* Module Groups */
-.module-group {
-    background: linear-gradient(135deg, 
-        rgba(12, 20, 32, 0.85), 
-        rgba(18, 28, 42, 0.85));
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 8px;
-    margin: 3px 4px;
-    padding: 2px;
-    box-shadow: 0 0 4px rgba(0, 255, 255, 0.1);
+/* Island Styling for all three sections */
+#window,
+#workspaces,
+.modules-right>widget>box {
+  background: @bg-solid;
+  border: 1px solid @border-main;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 4px 4px;
 }
 
-/* Universal Module Styling - Individual modules within groups */
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#pulseaudio,
+/* Specific text styling for the window island */
+#window {
+  color: @text-main;
+  font-weight: 600;
+  font-style: normal;
+  /* Removed italic for a cleaner "Desktop" label */
+}
+
+#custom-ascii-vol {
+  font-family: "JetBrains Mono Nerd Font";
+  font-size: 13px;
+  padding: 0 8px;
+}
+
 #network,
-#tray,
-#custom-notification,
-#custom-system-group,
-#custom-media-group,
-#custom-status-group {
-    background: transparent;
-    color: @text-primary;
-    border: none;
-    border-radius: 4px;
-    padding: 4px 7px;
-    margin: 1px 2px;
-    transition: all 0.2s ease;
-}
-
-/* Hover Effects - Subtle */
-#clock:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover,
-#backlight:hover,
-#pulseaudio:hover,
-#network:hover,
-#custom-notification:hover {
-    background: rgba(0, 255, 255, 0.1);
-    color: @accent-primary;
-}
-
-/* Workspaces - Keep prominent */
-#workspaces {
-    background: linear-gradient(90deg, 
-        rgba(12, 20, 32, 0.9), 
-        rgba(18, 28, 42, 0.9));
-    border: 1px solid @accent-primary;
-    border-radius: 8px;
-    padding: 2px;
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
-    margin: 3px 6px;
+#pulseaudio,
+#clock,
+#custom-notification {
+  background: transparent;
+  padding: 0 10px;
+  color: @text-main;
 }
 
 #workspaces button {
-    background: transparent;
-    color: @text-secondary;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    padding: 3px 8px;
-    margin: 1px;
-    transition: all 0.2s ease;
-    font-weight: 600;
-}
-
-#workspaces button:hover {
-    background: rgba(0, 255, 255, 0.1);
-    color: @accent-primary;
+  color: @text-dim;
+  padding: 0 8px;
 }
 
 #workspaces button.active {
-    background: @accent-primary;
-    color: @bg-matrix;
-    font-weight: 700;
-    box-shadow: 0 0 4px rgba(0, 255, 255, 0.3);
+  color: @accent;
 }
 
-/* Window Title */
-#mpris,
-#media-group,
-#window {
-    background: rgba(12, 20, 32, 0.8);
-    border: 1px solid rgba(0, 255, 255, 0.2);
-    border-radius: 6px;
-    color: @text-secondary;
-    font-weight: 400;
-    font-style: italic;
-    padding: 4px 12px;
-    margin: 3px 4px;
-}
-
-/* Clock - Special treatment as primary time display */
 #clock {
-    background: linear-gradient(90deg, 
-        rgba(12, 20, 32, 0.9), 
-        rgba(18, 28, 42, 0.9));
-    border: 1px solid @accent-primary;
-    color: @accent-primary;
-    font-weight: 600;
-    font-size: 14px;
-    border-radius: 6px;
-    padding: 4px 12px;
-    margin: 3px 4px;
-    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
-}
-
-/* System Status Group */
-#custom-system-group {
-    background: rgba(12, 20, 32, 0.8);
-    border: 1px solid rgba(0, 255, 255, 0.2);
-    border-radius: 6px;
-    padding: 2px 8px;
-    margin: 3px 2px;
-}
-
-/* Battery States */
-#battery.warning {
-    color: @status-warning;
-}
-
-#battery.critical {
-    color: @status-critical;
-}
-
-/* Temperature States */
-#temperature.critical {
-    color: @status-critical;
-}
-
-/* Network States */
-#network.disconnected {
-    color: @status-critical;
-}
-
-/* Audio States */
-#pulseaudio.muted {
-    color: @text-dim;
-    opacity: 0.7;
-}
-
-/* Tray */
-#tray {
-    background: rgba(12, 20, 32, 0.8);
-    border: 1px solid rgba(200, 100, 255, 0.3);
-    border-radius: 6px;
-    padding: 2px 6px;
-    margin: 3px 4px;
-}
-
-/* Tooltip */
-tooltip {
-    background: @surface-cyber;
-    border: 1px solid @accent-primary;
-    border-radius: 6px;
-    color: @text-primary;
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
-    font-size: 12px;
+  font-weight: 800;
 }

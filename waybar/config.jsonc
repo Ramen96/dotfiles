@@ -1,193 +1,65 @@
 {
-  "height": 40,
-  "spacing": 8,
-  "margin-top": 8,
-  "margin-left": 15,
-  "margin-right": 15,
-  "margin-bottom": 0,
-  "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window"
-  ],
-  "modules-center": [
-    "mpris"
-  ],
-  "modules-right": [
-    "group/media-group",
-    "group/system-group",
-    "clock",
-    "tray"
-  ],
-  // =======================
-  // Workspaces & Window
-  // =======================
-  "hyprland/workspaces": {
-    "persistent-workspaces": {
-      "1": [], "2": [], "3": [], "4": [], "5": [], "6": []
-    },
-    "disable-scroll": false,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{icon}",
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "urgent": "!",
-      "focused": "●",
-      "default": "○"
-    }
-  },
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "margin-top": 4,
+  "margin-left": 10,
+  "margin-right": 10,
+
+  "modules-left": ["hyprland/window"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["group/system-cluster"],
+
   "hyprland/window": {
-    "max-length": 40,
-    "tooltip": true,
     "format": "{title}",
     "separate-outputs": true,
     "rewrite": {
-      "(.*) — Mozilla Firefox": "Firefox",
-      "(.*) - Google Chrome": "Chrome",
-      "(.*) - Visual Studio Code": "VSCode",
-      "(.*) - vim": "Vim",
-      "": "Desktop"
+      "": "Desktop",           // If title is empty, show Desktop
+      "(.*) — Mozilla Firefox": "Firefox", // Example: clean up titles
+      "(.*) - Visual Studio Code": "VS Code"
+    },
+    "max-length": 50
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "active": "󰮯",
+      "default": "󰊠",
+      "urgent": "󰀨"
     }
   },
-  // =======================
-  // Grouped Modules
-  // =======================
-  "group/system-group": {
-    "class": "module-group",
+
+  "group/system-cluster": {
     "orientation": "horizontal",
     "modules": [
-      // "cpu",
-      // "memory",
-      "temperature",
-      "battery",
-    ]
-  },
-  "group/media-group": {
-    "class": "module-group",
-    "orientation": "horizontal",
-    "modules": [
-      "backlight",
       "network",
-      "custom/notification",
       "pulseaudio",
-      
+      "custom/ascii-vol",
+      "clock",
+      "custom/notification"
     ]
   },
-  // =======================
-  // Individual Native Modules
-  // =======================
-  "cpu": {
-    "interval": 5,
-    "format": "󰘚 {usage}%",
-    "states": {
-      "warning": 70,
-      "critical": 90
-    }
-  },
-  "memory": {
-    "interval": 5,
-    "format": "󰍛 {percentage}%",
-    "states": {
-      "warning": 70,
-      "critical": 90
-    }
-  },
-  "temperature": {
-    "thermal-zone": 0,
-    "critical-threshold": 80,
-    "interval": 5,
-    "format-critical": "󰸁 {temperatureC}°C",
-    "format": "{temperatureC}°C"
-  },
-  "pulseaudio": {
-    "scroll-step": 2,
-    "format": "{icon}",
-    "format-muted": "󰖁",
-    "format-icons": {
-        "headphone": "󰋋",
-        "headset": "󰋎",
-        "default": ["󰕿", "󰖀", "󰕾"]
-    },
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon}",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "on-scroll-up": "brightnessctl set +5%",
-    "on-scroll-down": "brightnessctl set 5%-",
-    "tooltip": true,
-    "tooltip-format": "Brightness: {percent}%\nScroll to adjust"
-  },
-  "network": {
-    "interval": 10,
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰈀",
-    "format-icons": {
-      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
-    },
-    "tooltip-format": "{essid}\n{ipaddr}/{cidr}\n↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
-    "format-disconnected": "󰤭",
-    "on-click": "nm-connection-editor"
-  },
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-plugged": "󰚥 {capacity}%",
-    "format-full": "󰁹 Full",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-  },
-  "clock": {
+
+  "network": { "format-wifi": "󰤨", "format-ethernet": "󰈀", "format-disconnected": "󰤭" },
+  "pulseaudio": { "format": "{icon}", "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] }, "on-click": "pavucontrol" },
+  "custom/ascii-vol": {
+    "exec": "~/.config/waybar/scripts/volume-ascii.sh",
     "interval": 1,
-    "format": "󰥔 {:%H:%M:%S}",
-    "format-alt": "󰃭 {:%Y-%m-%d %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": "{}",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "tooltip": false
   },
-  
-  "mpris": {
-    "format": "{player_icon} {title} - {artist}",
-    "format-paused": "⏸ {title} - {artist}",
-    "player-icons": {
-      "default": "▶",
-    },
-    "max-length": 40,
-    "on-click": "playerctl play-pause"
-  },
-  // =======================
-  // SwayNC Notification Center
-  // =======================
+  "clock": { "format": "󰥔 {:%I:%M %p}" },
   "custom/notification": {
-    "tooltip": false,
     "format": "{icon}",
-    "format-icons": {
-      "notification": "󱅫",
-      "none": "󰂚",
-      "dnd-notification": "󰂛",
-      "dnd-none": "󰂛",
-      "inhibited-notification": "󰂠",
-      "inhibited-none": "󰂠",
-      "dnd-inhibited-notification": "󰂛",
-      "dnd-inhibited-none": "󰂛"
-    },
+    "format-icons": { "notification": "󱅫", "none": "󰂚" },
     "return-type": "json",
-    "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
     "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
     "escape": true
-  },
-  "tray": {
-    "icon-size": 16,
-    "spacing": 6,
-    "show-passive-items": true
   }
 }
