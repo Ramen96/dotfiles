@@ -1,9 +1,16 @@
 # Theme
-theme = light:Catppuccin Latte, dark:Everforest Dark Hard
+theme = light:TokyoNight Day, dark:TokyoNight
 
 # Font
-font-size = 15
+font-size = 18
 
-# Window Size
-window-width = 110
-window-height = 25
+# Cursor
+cursor-style = block
+cursor-style-blink = true
+
+# Shell Integration
+shell-integration-features = no-cursor
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
