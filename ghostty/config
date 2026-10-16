@@ -1,5 +1,6 @@
 # Theme
-theme = light:Belafonte Day, dark:TokyoNight
+# theme = light:Belafonte Day, dark:Belafonte Night Bright
+theme = light:Belafonte Day, dark:Dracula+
 
 # Font
 font-size = 18
@@ -14,3 +15,8 @@ shell-integration-features = no-cursor
 # Clipboard
 clipboard-read = allow
 clipboard-write = allow
+
+# Transparancy
+background-opacity = 0.8
+background-blur = macos-glass-regular
+
