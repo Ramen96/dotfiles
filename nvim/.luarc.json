@@ -1,0 +1,9 @@
+{
+  "workspace": {
+    "checkThirdParty": false,
+    "library": [
+      "$VIMRUNTIME",
+      "${3rd}/luv/library"
+    ]
+  }
+}
