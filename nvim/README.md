@@ -134,3 +134,62 @@ pip3 install --break-system-packages pyright ruff flake8
 3. **Node:** Ensure Node.js and NPM are installed — the auto-installer uses nvm. If you installed manually, make sure `node` and `npm` are in your PATH. Your Tailwind and Angular extras depend on these.
 4. **Tree-sitter:** After installing Node/NPM, run `npm install -g tree-sitter-cli` to allow Neovim to compile language parsers.
 5. **PATH (Ubuntu):** If `shfmt`, `stylua`, or Go tools aren't found after install, make sure `~/.cargo/bin` and `$(go env GOPATH)/bin` are in your PATH. Adding these to `~/.profile` or `~/.bashrc` and sourcing it will fix it.
+
+---
+
+## AI Plugins
+
+---
+
+Two AI plugins are enabled as LazyVim extras in `lua/config/lazy.lua`, with adjustments in `lua/plugins/ai.lua`. Both run on the installed **Claude Code** (`claude`) and its login, so no API key is needed.
+
+### Claude Code — `claudecode.nvim` (`<leader>a`)
+
+Runs Claude Code in a split next to your code. Claude sees your open file and selection, and its proposed edits open as diffs you accept or reject.
+
+| Shortcut | Mode | Action |
+|----------|------|--------|
+| `<leader>ac` | normal | Toggle Claude Code split |
+| `<leader>af` | normal | Focus Claude Code |
+| `<leader>ar` | normal | Resume a previous session (pick from list) |
+| `<leader>aC` | normal | Continue the most recent session |
+| `<leader>ab` | normal | Add current file to the conversation |
+| `<leader>as` | visual | Send selection to Claude |
+| `<leader>as` | file explorer | Add the file under the cursor |
+| `<leader>aa` | normal | Accept Claude's proposed diff |
+| `<leader>ad` | normal | Reject Claude's proposed diff |
+
+### Avante — `avante.nvim` (`<leader>v`)
+
+A Cursor-style chat sidebar. It drives Claude Code through ACP and **asks permission** before editing files or running commands (`ACP_PERMISSION_MODE = "default"` in `lua/plugins/ai.lua`). Its shortcuts are moved from `<leader>a` to `<leader>v` so they don't clash with Claude Code.
+
+| Shortcut | Mode | Action |
+|----------|------|--------|
+| `<leader>va` | normal / visual | Ask Avante (about the selection, in visual mode) |
+| `<leader>vc` | normal | Chat with Avante |
+| `<leader>ve` | visual | Edit the selection with Avante |
+| `<leader>vt` | normal | Toggle the sidebar |
+| `<leader>vf` | normal | Focus the sidebar |
+| `<leader>vn` | normal | New chat |
+| `<leader>vh` | normal | Chat history |
+| `<leader>vm` | normal | Select model |
+| `<leader>vp` | normal | Switch provider |
+| `<leader>vr` | normal | Refresh |
+| `<leader>vs` | normal | Stop the current request |
+
+### Setup Notes
+
+1. **Claude Code:** install it and log in once with `claude`.
+2. **Avante bridge:** `npm install -g @zed-industries/claude-agent-acp` (lets Avante talk to Claude Code).
+3. **Avante build:** uses `bash build.sh` to download prebuilt libraries, because building from source (`make`) needs a recent Rust toolchain.
+4. **Extra dependencies:** current Avante needs `plenary.nvim`, `mega.cmdparse` and `mega.logging`; they're listed in `lua/plugins/ai.lua` since LazyVim's extra doesn't include them yet.
+
+> Press `<leader>a` or `<leader>v` and wait a moment to see these shortcuts in the which-key popup.
+
+---
+
+## Images
+
+---
+
+`lua/plugins/image.lua` enables the snacks.nvim image viewer: opening a `.png`, `.jpg`, `.gif`, `.webp`, `.heic`, etc. shows the image (Ghostty supports it natively). Needs ImageMagick (`brew install imagemagick`); PDFs also need Ghostscript (`brew install ghostscript`).

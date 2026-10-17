@@ -47,6 +47,9 @@ require("lazy").setup({
     { "mcchrish/zenbones.nvim", name = "zenbones", dependencies = { "rktjmp/lush.nvim" }, priority = 1000 },
     { "thesimonho/kanagawa-paper.nvim", name = "kanagawa-paper", priority = 1000 },
     { "webhooked/kanso.nvim", name = "kanso", priority = 1000 },
+    -- AI (keymaps adjusted in lua/plugins/ai.lua)
+    { import = "lazyvim.plugins.extras.ai.claudecode" },
+    { import = "lazyvim.plugins.extras.ai.avante" },
     -- 3. EDITOR TOOLS
     -- { import = "lazyvim.plugins.extras.linting.cspell" },
     { import = "lazyvim.plugins.extras.editor.aerial" },
