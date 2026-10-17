@@ -1,82 +1,10 @@
--- Colorscheme that inherits Ghostty's current theme: it reads the Ghostty config and theme
--- files, builds syntax colors from the terminal's 16-color palette, and leaves the background
--- transparent so the terminal shows through. Neovim re-sources the colorscheme whenever
+-- Colorscheme that inherits the terminal's current theme: it asks the terminal for its colors
+-- (see lua/terminal_colors.lua), builds syntax colors from the 16-color palette, and leaves the
+-- background transparent so the terminal shows through. Asking the terminal instead of reading
+-- Ghostty's config means this also works over SSH. Neovim re-sources the colorscheme whenever
 -- 'background' changes, so this also follows Ghostty's light:/dark: theme pair.
 
-local home = vim.env.HOME
-local config_files = {
-  home .. "/.config/ghostty/config",
-  home .. "/.config/ghostty/config.ghostty",
-  home .. "/Library/Application Support/com.mitchellh.ghostty/config",
-  home .. "/Library/Application Support/com.mitchellh.ghostty/config.ghostty",
-}
-local theme_dirs = {
-  home .. "/.config/ghostty/themes",
-  (vim.env.GHOSTTY_RESOURCES_DIR or "/Applications/Ghostty.app/Contents/Resources/ghostty") .. "/themes",
-}
-
--- Reads `key = value` lines; palette entries go into colors.palette[0..15]
-local function read_settings(path, colors)
-  local f = io.open(path, "r")
-  if not f then
-    return
-  end
-  for line in f:lines() do
-    local key, value = line:match("^%s*([%w%-]+)%s*=%s*(.-)%s*$")
-    if key and value ~= "" then
-      value = value:gsub('^"(.*)"$', "%1")
-      if key == "palette" then
-        local index, hex = value:match("^(%d+)%s*=%s*(#?%x+)$")
-        if index and tonumber(index) < 16 then
-          colors.palette[tonumber(index)] = hex:sub(1, 1) == "#" and hex or "#" .. hex
-        end
-      else
-        colors[key] = value
-      end
-    end
-  end
-  f:close()
-end
-
-local function theme_path(name)
-  if name:sub(1, 1) == "/" then
-    return name
-  end
-  for _, dir in ipairs(theme_dirs) do
-    local path = dir .. "/" .. name
-    if vim.uv.fs_stat(path) then
-      return path
-    end
-  end
-end
-
-local function load_ghostty_colors()
-  local config = { palette = {} }
-  for _, path in ipairs(config_files) do
-    read_settings(path, config)
-  end
-
-  local colors = { palette = {} }
-  if config.theme then
-    -- "light:A, dark:B" or a single theme name
-    local name = config.theme:match(vim.o.background .. ":%s*([^,]+)") or config.theme
-    name = vim.trim(name)
-    local path = not name:find("^%a+:") and theme_path(name)
-    if path then
-      read_settings(path, colors)
-    end
-  end
-  -- Colors set directly in the config override the theme
-  for key, value in pairs(config) do
-    if key ~= "palette" and key ~= "theme" then
-      colors[key] = value
-    end
-  end
-  for index, hex in pairs(config.palette) do
-    colors.palette[index] = hex
-  end
-  return colors
-end
+local terminal = require("terminal_colors")
 
 local function rgb(hex)
   hex = hex:gsub("#", "")
@@ -119,16 +47,20 @@ local function readable(color, bg, fg, minimum)
   return result
 end
 
-local ghostty = load_ghostty_colors()
-local p = ghostty.palette
-if not (ghostty.background and ghostty.foreground and p[1] and p[8]) then
-  vim.notify("ghostty colorscheme: could not read Ghostty's theme, using default", vim.log.levels.WARN)
-  vim.cmd.colorscheme("default")
-  return
-end
+-- Apply the cached colors right away, then ask the terminal and re-apply if they changed
+local ghostty = terminal.cached()
+terminal.applied = ghostty
+terminal.query(function()
+  vim.cmd.colorscheme("ghostty")
+end)
 
 vim.cmd("highlight clear")
 vim.g.colors_name = "ghostty"
+if not ghostty then
+  -- Nothing cached yet: keep Neovim's default colors until the terminal answers
+  return
+end
+local p = ghostty.palette
 
 local bg = ghostty.background
 local fg = ghostty.foreground
